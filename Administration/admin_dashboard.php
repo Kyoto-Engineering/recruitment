@@ -17,10 +17,19 @@
     </head>
     
     
-    <body>
-        <header>A Banner will be here</header>
-        <nav></nav>
-        <div id="mainBody"></div>
-        <footer>Copyright&copy; Kyoto Engineering &amp; Automation Ltd IT Department.</footer>
+    <body class="w3-container">
+        <header class="w3-container w3-padding-48 jumbotron w3-teal">A Banner will be here</header>
+        <nav class="w3-container">
+            <a href="#">HTML</a> |
+            <a href="#">CSS</a> |
+            <a href="#">JavaScript</a> |
+            <a href="#">jQuery</a>
+        </nav>
+        <div id="mainBody" class="w3-container w3-cyan">
+            <h6> This is the main body. </h6>
+        </div>
+        <div class="w3-container w3-teal" >
+            <footer class="w3-container">Copyright&copy; Kyoto Engineering &amp; Automation Ltd IT Department.</footer>
+        </div>
     </body>
 </html>
