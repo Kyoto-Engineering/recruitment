@@ -46,16 +46,18 @@ class Signup
 						$query = "INSERT INTO tbl_user_reg(userName, email, phone, dob) VALUES('$userName', '$email', '$phone', '$dob')";
 	    	 			$inserted_row = $this->db->insert($query);
 
-						if(!empty($inserted_row)) {
+						if($inserted_row){
 
-							
+							$msg = "<span style='color:green'>Registration Complete. Go To mail For verify Your Account</span>";
+							return $msg;
+
 							$headers = 'From: '.$email."\r\n".
 							 
 							'Reply-To: '.$email."\r\n" .
 							 
 							'X-Mailer: PHP/' . phpversion();
 
-							$email_to = "job@keal.com.bd";
+							$email_to = "tauhidul.i@keal.com.bd";
 							$email_subject= "Account Verification";
 							$email_message= "This person has been registered and sent for email verification:
 							Name : $userName
@@ -73,7 +75,9 @@ class Signup
 
 							Please go to the link below to verify your email and complete the registration process
 
-							http://recruitment.keal.com.bd/LoginRegistrationForm/verify_email.php?contact=activate.php
+
+							http://recruitment.keal.com.bd/verify_email.php?contact=$phone
+
 							 
 							Best Regards,
 							 
