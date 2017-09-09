@@ -17,11 +17,7 @@
    <header>
              
                         
-                         <?php
-                            if (isset($userlog)) {
-                                echo $userlog;
-                            }
-                        ?>
+                         
                 
             </header>
             <section>				
@@ -32,6 +28,11 @@
                     <div id="wrapper">
                         <div id="login" class="animate form">
                             <form  action="" method="post"> 
+                            <?php
+                                if (isset($userlog)) {
+                                    echo $userlog;
+                                }
+                            ?>
                                 <h1>Log in</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Your email or username </label>

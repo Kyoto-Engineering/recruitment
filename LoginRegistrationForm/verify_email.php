@@ -1,35 +1,28 @@
+<?php include_once "lib/Database.php"; ?>
 <?php
-include_once 'dbconfig.php';
-
-$user_contact = $_GET['contact'];
-
-
-$count=0;
-	if($count == 0)
-	{
-		$sql="UPDATE tbl_user_reg SET verified='1' WHERE user_contact='$user_contact'";
-		mysql_query($sql);
-		?>
-		<script>
-		alert('successfully verified, please login to proceed further');
-        window.location.href='recruitment_login_register.php?success'; #make chage here.
-        </script>
-		<?php
- }
-
-
-
-	else
-	{
-		?>
-		<script>
-		alert('Sorry! email id already taken');
-window.location.href='recruitment_login_register.php';
-        
-        </script>
-		<?php
-	}
-
-
+	$db = new Database();
 ?>
+	<?php
+
+			$phone = $_GET['phone'];
+
+
+			$count=0;
+				if($count == 0)
+				{
+					$sql="UPDATE tbl_user_reg SET status='1' WHERE phone='$phone'";
+					$update_row = $this->db->update($sql);
+					?>
+					<script>
+					alert('successfully verified, please login to proceed further');
+			        window.location.href='LoginRegistrationForm/signup.php#tologin?success'; #make chage here.
+			        </script>
+					<?php
+			 } else { ?>
+					<script>
+					alert('Sorry! email id already taken');
+					window.location.href='LoginRegistrationForm/signup.php#toregister';
+			        
+			        </script>
+<?php } ?>
 
