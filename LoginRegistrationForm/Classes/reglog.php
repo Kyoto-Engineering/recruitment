@@ -48,9 +48,7 @@ class Signup
 
 						if(!empty($inserted_row)) {
 
-							$msg = "<span style='color:green'>Registration Complete. Go To mail For verify Your Account</span>";
-							return $msg;
-
+							
 							$headers = 'From: '.$email."\r\n".
 							 
 							'Reply-To: '.$email."\r\n" .
