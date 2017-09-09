@@ -30,7 +30,4 @@
         <div class="container">
             <!-- Codrops top bar -->
             
-             <header>
-                
-                
-            </header>
+          

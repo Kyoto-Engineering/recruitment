@@ -23,7 +23,7 @@ class Signup
 		
 		$email     = mysqli_real_escape_string($this->db->link, $data['email']);
 		$phone     = mysqli_real_escape_string($this->db->link, $data['phone']);
-		$dob     = mysqli_real_escape_string($this->db->link, $data['dob']);
+		$dob       = mysqli_real_escape_string($this->db->link, $data['dob']);
 		
 		if ($userName == "" || $email == "" || $phone == "" || $dob == "" ) {
 			
@@ -32,10 +32,10 @@ class Signup
 		}
 		
 		//email field must be uniqe so for doing uniqe need to do
-		$mailquery = "SELECT * FROM tbl_user_reg WHERE email = '$email' AND phone= '$phone'  LIMIT 1";
+		$mailquery = "SELECT * FROM tbl_user_reg WHERE email = '$email' OR phone= '$phone'  LIMIT 1";
 		$mailchk   = $this->db->select($mailquery);
 		if ($mailchk != false) {
-			$msg = "Email Already exist!!";
+			$msg = "<span style='color:red'>Email Or Phone Number Already exist!!</span>";
 			return $msg;
 			//email unique has done
 
@@ -48,13 +48,16 @@ class Signup
 
 						if(!empty($inserted_row)) {
 
+							$msg = "<span style='color:green'>Registration Complete. Go To mail For verify Your Account</span>";
+							return $msg;
+
 							$headers = 'From: '.$email."\r\n".
 							 
 							'Reply-To: '.$email."\r\n" .
 							 
 							'X-Mailer: PHP/' . phpversion();
 
-							 $email_to = "job@keal.com.bd";
+							$email_to = "job@keal.com.bd";
 							$email_subject= "Account Verification";
 							$email_message= "This person has been registered and sent for email verification:
 							Name : $userName
@@ -114,7 +117,7 @@ class Signup
 		    		echo "<script>window.location = 'index.php'</script>";
 
 		    	} else{
-		    		$msg = "User email or Password Not Match";
+		    		$msg = "<span style='color:red'>User email or Password Not Match</span>";
 				    return $msg;
 		    	}
 	}

@@ -13,18 +13,17 @@
 
 ?>  
 
-                        <?php
-                            if (isset($userReg)) {
-                                echo $userReg;
-                            }
-                        ?>
+                       
+   <header>
+             
+                        
                          <?php
                             if (isset($userlog)) {
                                 echo $userlog;
                             }
                         ?>
-
-        <br><br>
+                
+            </header>
             <section>				
                 <div id="container_demo" >
                    
@@ -40,7 +39,7 @@
                                 </p>
 
                                 <p> 
-                                    <label for="password" class="youpasswd" data-icon="p"> Your password </label>
+                                    <label for="password" class="youpasswd" data-icon="p"> Your  </label>
                                     <input id="password" name="phone" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
 
@@ -72,9 +71,14 @@
 
                         <div id="register" class="animate form">
                             <form  action="" method="post"> 
+                            <?php
+                                if (isset($userReg)) {
+                                    echo $userReg;
+                                }
+                            ?>
                                 <h1> Sign up </h1> 
                                 <p> 
-                                    <label for="usernamesignup" class="uname" data-icon="u">Username</label>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Name</label>
 
                                     <input id="usernamesignup" name="userName" required="required" type="text" placeholder="Your Name" />
                                 </p>
@@ -85,10 +89,10 @@
                                 </p>
                                 <p> 
                                     <label for="passwordsignup" class="uname" data-icon="p">Phone</label>
-                                    <input id="passwordsignup" name="phone" required="required" type="password" placeholder="Your Phone"/>
+                                    <input id="passwordsignup" name="phone" required="required" type="text" placeholder="Your Phone"/>
                                 </p>
                                 <p> 
-                                    <label for="usernamesignup" class="" data-icon="p">Date Of Birth</label>
+                                    <label for="usernamesignup" class="" >Date Of Birth</label>
                                     <input id="usernamesignup" name="dob" required="required" type="date"/>
                                 </p>
                                 <p class="signin button"> 
