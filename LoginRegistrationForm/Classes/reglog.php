@@ -48,7 +48,13 @@ class Signup
 
 						if($inserted_row){
 
-							
+							?>
+                                <script>
+                                alert('Please check your email for account verification!');
+                                window.location.href='LoginRegistrationForm/signup.php#tologin?success';
+                                </script>
+                            <?php
+
 
 							$headers = 'From: '.$email."\r\n".
 							 
