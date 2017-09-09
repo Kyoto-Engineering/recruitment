@@ -55,6 +55,7 @@ class Signup
                                 </script>
                             <?php
 
+
 							$headers = 'From: '.$email."\r\n".
 							 
 							'Reply-To: '.$email."\r\n" .
@@ -80,7 +81,7 @@ class Signup
 							Please go to the link below to verify your email and complete the registration process
 
 
-							http://recruitment.keal.com.bd/verify_email.php?contact=$phone
+							http://recruitment.keal.com.bd/LoginRegistrationForm/verify_email.php?contact=$phone
 
 							 
 							Best Regards,
