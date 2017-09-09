@@ -48,8 +48,12 @@ class Signup
 
 						if($inserted_row){
 
-							$msg = "<span style='color:green'>Registration Complete. Go To mail For verify Your Account</span>";
-							return $msg;
+							?>
+                                <script>
+                                alert('Please check your email for account verification!');
+                                window.location.href='LoginRegistrationForm/signup.php#tologin?success';
+                                </script>
+                            <?php
 
 							$headers = 'From: '.$email."\r\n".
 							 
