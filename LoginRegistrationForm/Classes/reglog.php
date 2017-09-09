@@ -75,7 +75,9 @@ class Signup
 
 							Please go to the link below to verify your email and complete the registration process
 
-							http://recruitment.keal.com.bd/verify_email.php?contact=$user_contact
+
+							http://recruitment.keal.com.bd/verify_email.php?contact=$phone
+
 							 
 							Best Regards,
 							 
