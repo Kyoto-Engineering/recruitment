@@ -12,6 +12,8 @@
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/style3.css" />
 		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
 
            <script>
         function validateForm() {

@@ -16,6 +16,19 @@ class Signup
 		$this->fm = new Format();
 	}
 
+
+	public function getspecilization(){
+		$query = "SELECT * FROM tbl_specialization ORDER BY spId DESC";
+		$result = $this->db->select($query);
+		return $result;
+	}
+
+	public function getHeducation(){
+		$query = "SELECT * FROM tbl_hedu ORDER BY HID DESC";
+		$result = $this->db->select($query);
+		return $result;
+	}
+
 	public function userRegistration($data){
 
 		
@@ -103,13 +116,13 @@ class Signup
 			}
 	
 
-		public function userLogin($data){
-			$email= mysqli_real_escape_string($this->db->link, $data['email']);
-		    $phone = mysqli_real_escape_string($this->db->link, $data['phone']);
+		public function userLogin($email, $phone){
+			//$email= mysqli_real_escape_string($this->db->link, $data['email']);
+		    //$phone = mysqli_real_escape_string($this->db->link, $data['phone']);
 
 
-		    if (empty($email) || empty($phone)) {
-		    	$msg = "Input User email or Pass";
+		    //if (empty($email) || empty($phone)) {
+		    	/*$msg = "Input User email or Pass";
 				return $msg;
 		    }
 
@@ -119,15 +132,41 @@ class Signup
 		    		$value = $result->fetch_assoc();
 
 		    		Session::set("userLogin", true);
-		    		Session::set("userId", $value['regid']);
+		    		Session::set("userId", $value['regId']);
 		    		Session::set("userName",$value['userName']);
 		    		echo "<script>window.location = 'index.php'</script>";
 
 		    	} else{
 		    		$msg = "<span style='color:red'>User email or Password Not Match</span>";
 				    return $msg;
-		    	}
+		    	}*/
+
+		    		$email = $this->fm->validation($email);
+					$phone = $this->fm->validation($phone);
+
+		$email = mysqli_real_escape_string($this->db->link, $email);
+		$phone = mysqli_real_escape_string($this->db->link, $phone);
+
+		if (empty($email) || empty($phone)) {
+			$logmsg = "Username Or Password Must Not be Empty!!";
+			return $logmsg;
+		}else{
+			$query = "SELECT * FROM tbl_user_reg WHERE email = '$email' AND phone = '$phone'";
+			$result = $this->db->select($query);
+			if ($result !=false) {
+				$value = $result->fetch_assoc();
+				Session::set("login", true);
+				Session::set("userId",   $value['regId']);
+				Session::set("userName", $value['userName']);
+				
+				header("Location:index.php");
+			}else{
+				$logmsg = "Username Or Password Not Match!!";
+			    return $logmsg;
+			}
+		}
 	}
+	
 
 }//main class
 ?>
