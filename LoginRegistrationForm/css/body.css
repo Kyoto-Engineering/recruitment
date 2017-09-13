@@ -1,0 +1,23 @@
+body {
+    background-image: url("../image/01.jpg");
+    background-color: #cccccc;
+    background-size: cover;
+}
+
+.education{
+	background-color: #cccccc;
+	border: 1px solid white;
+	width: 100%;
+	color:#000;
+
+}
+.tab1{
+	margin: 0 auto;
+	color:#fff;
+}
+
+.signin{
+	float: right;
+	background-color: green;
+	color: #000; 
+}

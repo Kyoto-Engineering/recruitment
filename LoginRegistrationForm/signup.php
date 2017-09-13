@@ -97,41 +97,7 @@
                                     <label for="usernamesignup" class="date" >Date Of Birth</label>
                                     <input id="usernamesignup" name="dob" required="required" type="date"/>
                                 </p>
-                                  <p>
-
-                                    <label for="passwordsignup" class="uname">Specialization</label>
-                                        <select class="form-control" id="sellect" name="spId">
-                                            <option>Specialization</option>
-                                             <?php
-                                                $getsp = $user->getspecilization();
-                                                if ($getsp) {
-                                                    while ($value = $getsp->fetch_assoc()) {
-                                               
-                                                 
-                                                  ?>
-                                              <option value="<?php echo $value['spId'];?>"><?php echo $value['spName'];?></option>
-                                            <?php } } ?>
-
-                                            </select>
-                                </p>
-                                        <br>
-                                  <p>
-
-                                    <label for="passwordsignup" class="uname">Highier Education</label>
-                                        <select class="form-control" id="sellect" name="HID">
-                                            <option>Highier Education</option>
-                                             <?php
-                                                $getHe = $user->getHeducation();
-                                                if ($getHe) {
-                                                    while ($value = $getHe->fetch_assoc()) {
-                                               
-                                                 
-                                                  ?>
-                                              <option value="<?php echo $value['HID'];?>"><?php echo $value['subName'];?></option>
-                                            <?php } } ?>
-
-                                            </select>
-                                </p>
+                                  
                                 <p class="signin button"> 
 									<input type="submit" name= "submit" value="Sign up"/> 
 								</p>
