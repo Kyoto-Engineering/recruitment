@@ -2,29 +2,46 @@
 
 <html>
     <head>
-        
+        <title>Admin : Department Creation.</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../assets/css/form.css">
+        <link rel="stylesheet" href="../assets/css/footer.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     
     
     <body>
         
+        <div id="banner">
+            <img src="../assets/kyotoBanner.PNG">
+        </div>
+        
+        <div id="adminForm">
+            <h3 id="Header"> Department Input Form</h3>
+            <br>
+               <form>
+                  <div class="form-group">
+                    <label for="dept_name">Department Name: </label>
+                    <input type="text" class="form-control" id="dept_name">
+                  </div>
+                   
+                   <div class="form-group">
+                      <label for="description">Description:</label>
+                      <textarea class="form-control" rows="5" id="description"></textarea>
+                   </div>
+                   
+                   
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+        </div> <br> &nbsp;
+        
         <div>
-            <form>
-                
-                <table>
-                    
-                    <caption> Department Creation </caption>
-                    
-                    <tr> <td> Department Title </td>    <td> <input type="text" name="jobTitle"> </td> </tr> 
-                    
-                    <tr>
-                        <td> Department Description </td> <td> <textarea rows="4" cols="50"> </textarea> </td>
-                    </tr>
-                    
-                    <tr> <td id="formButton"> <input type="submit" value="Add Department"> </td> </tr>
-                </table>
-    
-            </form>
+            <footer>
+                <p> Copyright &copy; Kyoto Engineering &amp; Automation Ltd.</p>
+            </footer>
         </div>
         
     </body>
