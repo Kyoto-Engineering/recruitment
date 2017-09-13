@@ -80,6 +80,6 @@
                 </table>
             </form>
         </div>
-        
+        <div> &#xf26e; </div>
     </body>
 </html>
