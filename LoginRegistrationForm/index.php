@@ -14,14 +14,7 @@
           <img class="img-responsive" src="images/careers.jpg" alt="image">
         
       </div>
-        <div class="container">
-              <div class="row">
-              <div class="alert alert-success alert-dismissible" role="alert">
-            
-               <marquee><p style="font-family: Impact; font-size: 14pt"><b><i> Well Come to Kyoto Automation & Engineering. Dear Candidate At first Fill your Address.</i></b></p></marquee>
-            </div>
-              </div>
-        </div>
+       
 
     <div class="container">
       <div id="row">

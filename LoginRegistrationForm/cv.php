@@ -14,7 +14,7 @@
 <div class="container back-pic">
 	<div class="row">
 	<div class="col-md-4"></div>
-		<div class="col-md-8 tab1">
+		<div class="col-md-5 tab1">
 			<h2>SSC Level</h2>
 			<div class="education">
 			<form action="" method="post">

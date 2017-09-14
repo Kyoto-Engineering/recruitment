@@ -31,7 +31,7 @@
       self::init();
       if (self::get("login") == false) {
        self::destroy();
-       header("Location:signup.php");
+       header("Location:login.php");
       }
      }
 
@@ -44,7 +44,7 @@
 
      public static function destroy(){
       session_destroy();
-      header("Location:signup.php");
+      header("Location:login.php");
      }
     }
     ?>
