@@ -221,7 +221,7 @@
                                                
                                                  
                                                   ?>
-                                              <option value="<?php echo $value['spId'];?>"><?php echo $value['spName'];?></option>
+                                              <option value="<?php echo $value['spId'];?>"><?php echo $value['specialization'];?></option>
                                             <?php } } ?>
 
                                             </select>

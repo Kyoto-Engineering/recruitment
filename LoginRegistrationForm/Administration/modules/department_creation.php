@@ -1,3 +1,10 @@
+<?php include_once "../../Classes/module.php";?>
+<?php
+    $allM = new Module();
+     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        $usercv = $allM->departmentCreate($_POST);
+    }
+?>
 <!DOCTYPE html>
 
 <html>
@@ -21,20 +28,25 @@
         
         <div id="adminForm">
             <h3 id="Header"> Department Input Form</h3>
+            <?php
+                if (isset($usercv)) {
+                    echo $usercv;
+                }
+            ?>
             <br>
-               <form>
+               <form action="" method="POST">
                   <div class="form-group">
                     <label for="dept_name">Department Name: </label>
-                    <input type="text" class="form-control" id="dept_name">
+                    <input type="text" name="deptName" class="form-control" id="dept_name">
                   </div>
                    
                    <div class="form-group">
                       <label for="description">Description:</label>
-                      <textarea class="form-control" rows="5" id="description"></textarea>
+                      <textarea class="form-control" name="description" rows="5" id="description"></textarea>
                    </div>
                    
                    
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  <button type="submit" name="submit" class="btn btn-default">Submit</button>
                 </form>
         </div> <br> &nbsp;
         

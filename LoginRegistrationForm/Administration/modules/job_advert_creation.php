@@ -1,3 +1,10 @@
+<?php include_once "../../Classes/module.php";?>
+<?php
+    $allM = new Module();
+     /*if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        $usercv = $allM->degreeCreate($_POST);
+    }*/
+?>
 <!DOCTYPE html>
 
 <html>
@@ -40,8 +47,15 @@
                 <div class="dropdown" style="padding:2px">
                   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Job Title
                   <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Intern</a></li>
+                  <ul class="dropdown-menu" name="jobtitle">
+                  <?php
+                    $getJob = $allM->getAlljobs();
+                    if ($getJob) {
+                      while ($value = $getJob->fetch_assoc()) {
+                        
+                  ?>
+                    <li value="<?php echo $value['jid'];?>" ><?php echo $value['jobtitle'];?></li>
+                    <?php } } ?>
                   </ul>
                 </div>
                 
