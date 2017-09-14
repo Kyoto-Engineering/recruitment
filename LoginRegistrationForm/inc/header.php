@@ -19,12 +19,12 @@
     <title>Kyoto Recruitment System</title>
       
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+      <link rel="stylesheet" href="../css/body.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
     <link href="css/bootstrap.min.css" rel="stylesheet">
    
-      <link rel="stylesheet" href="../../assets/css/slider_recruitment.css">
+      
     
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
