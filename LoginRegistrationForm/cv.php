@@ -38,7 +38,7 @@
                                         	<?php } } ?>  	
                                         </select>
                                         
-                                        </select>
+                                       
                                     <br>
                                 </p>
                                  <p> 

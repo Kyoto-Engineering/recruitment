@@ -17,11 +17,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Kyoto Recruitment System</title>
+      
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/body.css" rel="stylesheet">
+      <link rel="stylesheet" href="../../assets/css/slider_recruitment.css">
     
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,11 +70,12 @@
                             ?>
                             
                           <li><a href="?action=logout">LogOut</a></li>
-                       
-                            
-                     
-                       
+                                                                      
                     </ul>
+                      
+                      <!-- Slider begins here -->
+                          <img src="../assets/images/recruitment1.jpg" alt="Banner">
+                      <!-- Slider ends here-->
                   </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
 </nav>

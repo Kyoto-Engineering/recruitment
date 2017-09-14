@@ -1,6 +1,6 @@
 body {
-    background-image: url("../image/01.jpg");
-    background-color: #cccccc;
+    /*background-image: url("../image/01.jpg");*/
+    background-color: cornsilk;
     background-size: cover;
 }
 
@@ -20,4 +20,8 @@ body {
 	float: right;
 	background-color: green;
 	color: #000; 
+}
+
+footer{
+    text-align: center;
 }
