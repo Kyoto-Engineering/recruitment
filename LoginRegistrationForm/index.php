@@ -16,9 +16,10 @@
         
         <div class="w3-bar">
             <a href="index.php" class="w3-bar-item"> Home </a>
-            <a href="basicinfo.php" class="w3-bar-item"> Basic Info</a> 
+            <a href="basicinfo.php" class="w3-bar-item"> Basic Info</a> <!-- Add #toregister -->  
             <a href="personalInfo.php" class="w3-bar-item"> Personal Info </a>
             <a href="cv.php" class="w3-bar-item"> Educational Details </a>
+            <a href="professionalTraining.php" class="w3-bar-item"> Professional Training </a>
         </div>
         
         <div>
@@ -32,7 +33,9 @@
                 <li> Your <b> Educational Details </b>. </li>
             </ol>
             
+            <p> If you have received/attended any kind of professional training you can add that to your CV in the <a href="professionalTraining.php">professional training</a>  section.</p>
+            
         </div>
-       
+       <br> <br>
 
 <?php include_once "inc/footer.php";?>
