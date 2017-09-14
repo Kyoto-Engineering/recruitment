@@ -13,18 +13,14 @@
 ?> 
 <div class="container back-pic">
 	<div class="row">
-	<div class="col-md-4"></div>
-		<div class="col-md-5 tab1">
-			<h2>SSC Level</h2>
+	
+	
+			
 			<div class="education">
 			<form action="" method="post">
-				<p> 
-                                    
-
-                                        
-                                    <br>
-                                </p>
-                                <br>
+				
+                <div class="col-md-4">    
+                <h2>SSC Level</h2>           
                                 <p> 
                                      <label for="sel1">Division</label>
                                         <select class="form-control" id="sellect" name="divId">
@@ -38,7 +34,7 @@
                                         	<?php } } ?>  	
                                         </select>
                                         
-                                        </select>
+                                       
                                     <br>
                                 </p>
                                  <p> 
@@ -85,16 +81,13 @@
                                         <?php } } ?>
                                         
                                         </select>
-                                    <br>
+                                   
                                 </p>
+                              </div>
                                 <!--school level-->
-
-                                <hr>
+                              <div class="col-md-4">
+                                
                                 <h2>Hsc/Diploma Level</h2>
-                                <hr>
-                           
-                          
-                                <br>
                                 <p> 
                                      <label for="sel1">Division</label>
                                         <select class="form-control" id="sellect" name="">
@@ -164,11 +157,13 @@
                                         <?php } } ?>
                                         
                                         </select>
-                                    <br>
+                               
                                 </p>
-                                 <hr>
+                                </div>
+                                <div class="col-md-4">
+                                 
                                 	<h2>Highest Education Level</h2>
-                                <hr>
+                                
                                 	<p> 
                             <label for="sel1">Institute</label>
                                         <select class="form-control" id="sellect" name="uId">
@@ -270,9 +265,10 @@
                                    
                                     <a href="index.php" class="to_register"> Go To Home </a>
                                 </p>
+                                </div>
                              </form>
 			</div>
-		</div>
+		
 	</div>
 
 </div>
