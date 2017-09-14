@@ -20,6 +20,10 @@
             <a href="cv.php" class="w3-bar-item"> My CV</a>
         </div>
         
+        <div>
+            <h3> WelCome to Kyoto Recruitment Portal</h3>
+            <p></p>
+        </div>
        
 
 <?php include_once "inc/footer.php";?>
