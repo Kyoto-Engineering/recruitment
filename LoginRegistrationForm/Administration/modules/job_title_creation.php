@@ -1,3 +1,4 @@
+<?php include_once "../../Classes/module.php";?>
 <!DOCTYPE html>
 
 <html>
@@ -5,7 +6,13 @@
         
     </head>
     
-    
+  <?php
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        $job = $allM->createJob($_POST);
+    }
+
+?>   
     <body>
         
         <div>
@@ -14,14 +21,28 @@
                 <table>
                     
                     <caption> Job Title Creation </caption>
-                    
-                    <tr> <td> Job Title </td>    <td> <input type="text" name="jobTitle"> </td> </tr> 
-                    
-                    <tr>
-                        <td> Job Description </td> <td> <textarea rows="4" cols="50"> </textarea> </td>
-                    </tr>
-                    
-                    <tr> <td id="formButton"> <input type="submit" value="Add Job Title"> </td> </tr>
+                    <?php
+                        if (isset($job)) {
+                            echo $job;
+                        }
+                    ?>
+                    <form action="" method="POST">
+                            <tr>
+                             <td> Job Title </td> 
+                                <td>
+                                 <input type="text" name="jobtitle">
+                                  </td>
+                             </tr> 
+                            
+                            <tr>
+                                <td> Job Description </td>
+                                 <td>
+                                    <textarea rows="4" cols="50" name="description"> </textarea>
+                                </td>
+                            </tr>
+                            
+                            <tr> <td id="formButton"> <input type="submit" name="submit" value="Add Job Title"> </td> </tr>
+                    </form>
                 </table>
     
             </form>

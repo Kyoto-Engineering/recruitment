@@ -1,3 +1,10 @@
+<?php include_once "../../Classes/module.php";?>
+<?php
+    $allM = new Module();
+     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        $usercv = $allM->degreeCreate($_POST);
+    }
+?>
 <!DOCTYPE html>
 
 <html>
@@ -21,13 +28,18 @@
         
         <div id="adminForm">
             <h3 id="Header"> Degree Input Form</h3>
+            <?php
+                if (isset($usercv)) {
+                    echo $usercv;
+                }
+            ?>
             <br>
-               <form>
+               <form action="" method="post">
                   <div class="form-group">
                     <label for="degree">Degree Name</label>
-                    <input type="text" class="form-control" id="degree">
+                    <input type="text" class="form-control" name="degreeName" id="degree">
                   </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  <button type="submit" name="submit" class="btn btn-default">Submit</button>
                 </form>
         </div> <br> &nbsp;
         
