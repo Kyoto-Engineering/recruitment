@@ -1,9 +1,10 @@
 <?php include_once "../../Classes/module.php";?>
+
 <?php
     $allM = new Module();
-     /*if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-        $usercv = $allM->degreeCreate($_POST);
-    }*/
+     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        $userjob = $allM->jobInput($_POST);
+    }
 ?>
 <!DOCTYPE html>
 
@@ -30,7 +31,7 @@
             
             <div class="container-fluid w3-bar w3-red" style="width:100%">
                 <a href="../create.php"> Create Panel </a> &nbsp;
-                <a href="../admin_dashboard.php"> Dashboard</a>
+                <a href="../index.php"> Dashboard</a>
             </div>
         </div> <br>
         
@@ -78,10 +79,26 @@
                                        
                                     <br>
                                 </p>
-               
+                                 <p> 
+                                     <label for="sel1">Job Level</label>
+                                        <select class="form-control" id="sellect" name="jlId">
+                                          <option>Select Job Level</option>
+                                            <?php
+                                                $getMedu = $allM->getMinimumedu();
+                                                if ($getMedu) {
+                                                  while ($value = $getMedu->fetch_assoc()) {
+                                                    
+                                              ?>
+                                           <option value="<?php echo $value['degId'];?>" ><?php echo $value['degName'];?></option>  
+                                          <?php } } ?>    
+                                        </select>
+                                        
+                                       
+                                    <br>
+                                </p>
                 <div class="form-group" style="padding:2px">
                     <div class='input-group date' id='datetimepicker1'> <b> Last date of Application </b>
-                        <input type='date' class="form-control" />
+                        <input type='date' name="ldApplication" class="form-control" />
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -107,17 +124,17 @@
                 
                    
                   
-                 
+                
                 
                 
                 <div class="form-group" style="padding:2px">
                   <label for="usr">Monthly Compansation:</label>
-                  <input type="number" class="form-control" id="compansation">
+                  <input type="number" name="mcomp" class="form-control" id="compansation">
                 </div>
                 
                 <div class="form-group" style="padding:2px">
                     <div class='input-group date' id='datetimepicker1'> <b> Expected Joining Date </b>
-                        <input type='date' class="form-control" />
+                        <input type='date' name="expDate" class="form-control" />
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -126,7 +143,7 @@
                 
                 <div class="form-group" style="padding:2px">
                   <label for="usr">Pre-requisite For Joining:</label>
-                  <input type="text" class="form-control" id="usr">
+                  <input type="text" name="pre-requisite" class="form-control" id="usr">
                 </div>
                 
                 <button type="submit" class="btn btn-default" style="padding:2px">Submit</button>

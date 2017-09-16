@@ -28,7 +28,7 @@
             <a href="modules/job_advert_creation.php"  class="w3-bar-item w3-button"> Create Job </a>
             <a href="modules/job_title_creation.php"  class="w3-bar-item w3-button"> Create Job Title </a>
             <a href="modules/specialization_decipline_creation.php"  class="w3-bar-item w3-button"> Create Specialization</a>
-            <a href="admin_dashboard.php"  class="w3-bar-item w3-button" id="dash"> Dashboard </a>
+            <a href="index.php"  class="w3-bar-item w3-button" id="dash"> Dashboard </a>
         </div>
         <div id="mainBody">
             
