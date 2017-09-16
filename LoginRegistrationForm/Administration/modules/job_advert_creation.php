@@ -43,30 +43,42 @@
             <br>
             
             <form style="padding:2px">
+                                  <p> 
+                                     <label for="sel1">Job Title</label>
+                                        <select class="form-control" id="sellect" name="jid">
+                                          <option>Select Job Title</option>
+                                           <?php
+                                             $getJob = $allM->getAlljobs();
+                                              if ($getJob) {
+                                                while ($value = $getJob->fetch_assoc()) {
+                                                  
+                                            ?>
+                                           <option value="<?php echo $value['jid'];?>" ><?php echo $value['jobtitle'];?></option>  
+                                          <?php } } ?>    
+                                        </select>
+                                        
+                                       
+                                    <br>
+                                </p>
+              
+                                    <p> 
+                                     <label for="sel1">Department</label>
+                                        <select class="form-control" id="sellect" name="did">
+                                          <option>Select Department</option>
+                                            <?php
+                                                $getdept = $allM->getAllDept();
+                                                if ($getdept) {
+                                                  while ($value = $getdept->fetch_assoc()) {
+                                                    
+                                              ?>
+                                           <option value="<?php echo $value['did'];?>" ><?php echo $value['deptName'];?></option>  
+                                          <?php } } ?>    
+                                        </select>
+                                        
+                                       
+                                    <br>
+                                </p>
                
-                <div class="dropdown" style="padding:2px">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Job Title
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu" name="jobtitle">
-                  <?php
-                    $getJob = $allM->getAlljobs();
-                    if ($getJob) {
-                      while ($value = $getJob->fetch_assoc()) {
-                        
-                  ?>
-                    <li value="<?php echo $value['jid'];?>" ><?php echo $value['jobtitle'];?></li>
-                    <?php } } ?>
-                  </ul>
-                </div>
-                
-                <div class="dropdown" style="padding:2px">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Department
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">IT</a></li>
-                  </ul>
-                </div>
-                
                 <div class="form-group" style="padding:2px">
                     <div class='input-group date' id='datetimepicker1'> <b> Last date of Application </b>
                         <input type='date' class="form-control" />
@@ -75,14 +87,28 @@
                         </span>
                     </div>
                 </div>
+                <p> 
+                                     <label for="sel1">Education</label>
+                                        <select class="form-control" id="sellect" name="degId">
+                                          <option>Minimum Education Required</option>
+                                            <?php
+                                                $getMedu = $allM->getMinimumedu();
+                                                if ($getMedu) {
+                                                  while ($value = $getMedu->fetch_assoc()) {
+                                                    
+                                              ?>
+                                           <option value="<?php echo $value['degId'];?>" ><?php echo $value['degName'];?></option>  
+                                          <?php } } ?>    
+                                        </select>
+                                        
+                                       
+                                    <br>
+                                </p>
                 
-                <div class="dropdown" style="padding:2px">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Minimum Education Required
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">BSc in Computer Science &amp; Engineering</a></li>
-                  </ul>
-                </div>
+                   
+                  
+                 
+                
                 
                 <div class="form-group" style="padding:2px">
                   <label for="usr">Monthly Compansation:</label>
