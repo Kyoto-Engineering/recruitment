@@ -1,6 +1,10 @@
+<?php
+ include_once "lib/Session.php";
+  Session::checkLogin();
+  ?>
+
 <?php include_once "lib/Database.php"; ?>
 <?php include_once "helpers/Format.php"; ?>
-<?php include_once "lib/Session.php"; ?>
 <?php
 /**
 * class for sign up & sign ion

@@ -13,7 +13,7 @@ $count=0;
 		?>
 		<script>
 		alert('successfully verified, please login to proceed further');
-        window.location.href='signup.php#tologin?success';
+        window.location.href='login.php#tologin?success';
         </script>
 		<?php
  }
@@ -25,7 +25,7 @@ $count=0;
 		?>
 		<script>
 		alert('Sorry! email id already taken');
-		window.location.href='signup.php#tologin';
+		window.location.href='login.php#tologin';
         
         </script>
 		<?php

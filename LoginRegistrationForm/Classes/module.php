@@ -97,6 +97,11 @@
 			return ($result);
 		}
 
+		public function getJoblevel(){
+			$query = "SELECT * FROM tbl_job_level ORDER BY levelId DESC";
+			$result = $this->db->select($query);
+			return ($result);
+		}
 		/*public function createJob($input){
 			$jobtitle = $this->fm->validation($input['jobtitle']);
 			$description = $this->fm->validation($input['description']);
@@ -120,15 +125,40 @@
 			}
 		}*/
 
-		/*public function jobInput($data){
-			$jid = $this->fm->validation($data['jid']);
-			$did = $this->fm->validation($data['did']);
-			$jlId = $this->fm->validation($data['jlId']);
-			$ldApplication = $this->fm->validation($input['ldApplication']);
-			$degId = $this->fm->validation($input['degId']);
-			$mcomp = $this->fm->validation($input['mcomp']);
-			$prerequisite = $this->fm->validation($input['prerequisite']);
-			$expDate = $this->fm->validation($input['expDate']);
-			$expDate = $this->fm->validation($input['expDate']);
-		}*/
+		public function jobInput($data){
+			$jId 		= 	$this->fm->validation($data['jId']);
+			$dId 		= 	$this->fm->validation($data['dId']);
+			$levelId 		= 	$this->fm->validation($data['levelId']);
+			$ldApplication = $this->fm->validation($data['ldApplication']);
+			$degId 		= 	$this->fm->validation($data['degId']);
+			$joblocation 		= 	$this->fm->validation($data['joblocation']);
+			$mcomp 		= 	$this->fm->validation($data['mcomp']);
+			$expDate 	= 	$this->fm->validation($data['expDate']);
+			$prerequisite = $this->fm->validation($data['prerequisite']);
+
+			$jId = mysqli_real_escape_string($this->db->link, $jId);
+			$dId = mysqli_real_escape_string($this->db->link, $dId);
+			$levelId = mysqli_real_escape_string($this->db->link, $levelId);
+			$ldApplication = mysqli_real_escape_string($this->db->link, $ldApplication);
+			$degId = mysqli_real_escape_string($this->db->link, $degId);
+			$joblocation = mysqli_real_escape_string($this->db->link, $joblocation);
+			$mcomp = mysqli_real_escape_string($this->db->link, $mcomp);
+			$expDate = mysqli_real_escape_string($this->db->link, $expDate);
+			$prerequisite = mysqli_real_escape_string($this->db->link, $prerequisite);
+
+			if ($jId == "" || $dId == "" ||$levelId == ""|| $ldApplication == ""|| $degId == "" || $joblocation == "" || $mcomp == ""|| $expDate =="" || $prerequisite == "") {
+				$msg = "Please Fillup All Field";
+					return $msg;
+			}else{
+				$query = "INSERT INTO tbl_user_job(jId, dId, levelId, ldApplication, degId, mcomp, expDate, prerequisite, joblocation) VALUES('$jId', '$dId', '$levelId', '$ldApplication', '$degId', '$mcomp', '$expDate', '$prerequisite', '$joblocation' )";
+				$result = $this->db->insert($query);
+				if ($result) {
+					$msg = "Record Successfully";
+					return $msg;
+				}else{
+					$msg = "Record Not Successfully";
+					return $msg;
+				}
+			}
+		}
 } ?>

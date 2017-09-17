@@ -42,11 +42,15 @@
         <div id="adminForm">
             <h3 id="Header"> Job Advertisement Form</h3>
             <br>
-            
-            <form style="padding:2px">
+            <?php
+              if (isset($userjob)) {
+                  echo $userjob;
+              }
+            ?>
+            <form action="" method="post" style="padding:2px">
                                   <p> 
                                      <label for="sel1">Job Title</label>
-                                        <select class="form-control" id="sellect" name="jid">
+                                        <select class="form-control" id="sellect" name="jId">
                                           <option>Select Job Title</option>
                                            <?php
                                              $getJob = $allM->getAlljobs();
@@ -54,7 +58,7 @@
                                                 while ($value = $getJob->fetch_assoc()) {
                                                   
                                             ?>
-                                           <option value="<?php echo $value['jid'];?>" ><?php echo $value['jobtitle'];?></option>  
+                                           <option value="<?php echo $value['jId'];?>" ><?php echo $value['jobtitle'];?></option>  
                                           <?php } } ?>    
                                         </select>
                                         
@@ -64,7 +68,7 @@
               
                                     <p> 
                                      <label for="sel1">Department</label>
-                                        <select class="form-control" id="sellect" name="did">
+                                        <select class="form-control" id="sellect" name="dId">
                                           <option>Select Department</option>
                                             <?php
                                                 $getdept = $allM->getAllDept();
@@ -72,7 +76,7 @@
                                                   while ($value = $getdept->fetch_assoc()) {
                                                     
                                               ?>
-                                           <option value="<?php echo $value['did'];?>" ><?php echo $value['deptName'];?></option>  
+                                           <option value="<?php echo $value['dId'];?>" ><?php echo $value['deptName'];?></option>  
                                           <?php } } ?>    
                                         </select>
                                         
@@ -81,15 +85,15 @@
                                 </p>
                                  <p> 
                                      <label for="sel1">Job Level</label>
-                                        <select class="form-control" id="sellect" name="jlId">
+                                        <select class="form-control" id="sellect" name="levelId">
                                           <option>Select Job Level</option>
                                             <?php
-                                                $getMedu = $allM->getMinimumedu();
-                                                if ($getMedu) {
-                                                  while ($value = $getMedu->fetch_assoc()) {
+                                                $getJob = $allM->getJoblevel();
+                                                if ($getJob) {
+                                                  while ($value = $getJob->fetch_assoc()) {
                                                     
                                               ?>
-                                           <option value="<?php echo $value['degId'];?>" ><?php echo $value['degName'];?></option>  
+                                           <option value="<?php echo $value['levelId'];?>" ><?php echo $value['levelName'];?></option>  
                                           <?php } } ?>    
                                         </select>
                                         
@@ -125,7 +129,15 @@
                    
                   
                 
-                
+                <div class="form-group" style="padding:2px">
+                    <div class='input-group date' id='datetimepicker1'> <b> Last date of Application </b>
+                        <input type='date' name="joblocation" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <p> 
                 
                 <div class="form-group" style="padding:2px">
                   <label for="usr">Monthly Compansation:</label>
@@ -143,10 +155,10 @@
                 
                 <div class="form-group" style="padding:2px">
                   <label for="usr">Pre-requisite For Joining:</label>
-                  <input type="text" name="pre-requisite" class="form-control" id="usr">
+                  <input type="text" name="prerequisite" class="form-control" id="usr">
                 </div>
                 
-                <button type="submit" class="btn btn-default" style="padding:2px">Submit</button>
+                <button type="submit" name="submit" class="btn btn-default" style="padding:2px">Submit</button>
                 
             </form>
         </div> &nbsp; <br> 
