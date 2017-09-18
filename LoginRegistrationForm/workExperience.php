@@ -20,26 +20,33 @@
         </div>
 
 
-        <div>
+        <div id="adminForm" style="margin:10px">
+            
             <form class="w3-container">
                 
                 <p>
+                    <label> <h2> Work Experience Details </h2> </label>
+                </p>
+                
+                <br>
+                
+                <p>
                     <label>Name of Company</label>
-                    <input class="w3-input" type="text" placeholder="Name of the institution from which you have received training" required>
+                    <input class="w3-input" type="text" placeholder="Name of the company of your previous employment" required>
                 </p>
                 
                 <br>
                 
                 <p>
                     <label>Designation</label>
-                    <input class="w3-input" type="text" placeholder="Name of the training course" required>
+                    <input class="w3-input" type="text" placeholder="Your designation during the employment period" required>
                 </p>
                 
                 <br>
                 
                 <p>
-                    <label>Training Length (in Months)</label>
-                    <input class="w3-input" type="number" placeholder="Length of the training" required>
+                    <label>Employment Length (in Months)</label>
+                    <input class="w3-input" type="number" placeholder="Length of your employment" required>
                     
                     <!--<input class="w3-radio" type="radio" name="length" value="day">
                     <label>Day(s)</label>

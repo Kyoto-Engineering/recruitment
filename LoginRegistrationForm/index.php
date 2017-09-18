@@ -23,7 +23,7 @@
             <a href="workExperience.php" class="w3-bar-item"> Work Experience </a>
         </div>
         
-        <div>
+        <div class="w3-container">
             <h3> Welcome to Kyoto Recruitment Portal</h3>
             <p> Complete the following steps to complete your CV. Without completing CV, there will be no job interview. You have to provide
                 the following informations.
