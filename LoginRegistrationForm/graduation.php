@@ -8,22 +8,20 @@
     }
  
 ?>
-    
-    <div class="w3-bar">
-            <a href="index.php" class="w3-bar-item"> Home </a>
-            <a href="personalInfo.php" class="w3-bar-item"> Personal Info </a>
-            <a href="basicinfo.php" class="w3-bar-item"> Address Info</a>
-            <a href="education.php" class="w3-bar-item"> Educational Details </a>
-            <a href="professionalTraining.php" class="w3-bar-item"> Professional Training </a>
-    </div>
 
-
-    
     <div class="container-fluid">
         
-        <header> <h2> Higher Secondary Certificate </h2> </header><br>
+        <header> <h2> Graduation Information </h2> </header>
         
         <form class="container-fluid">
+            
+            <p>
+                <label>Name of Degree</label>
+                <input class="w3-input" type="text" placeholder="Institution Name; Ex: Ideal School & College" >
+
+            </p>
+            <br>
+            
             
             <p>
                 <label>Name of Institution</label>
@@ -33,29 +31,19 @@
             <br>
             
             <p>
-                <label> Group </label>
+                <label> Passing Year </label>
                 <select class="w3-input" name="hscGroups">
-                    <option>Select Major</option>
+                    <option>Select Passing Year </option>
                 </select>
             </p>
             <br>
-            
             
             <p>
                 <label>Achieved Grade</label>
-                <input class="w3-input" type="text" placeholder="Achieved Grade in the Exam; Ex:4.99" >
+                <input class="w3-input" type="text" placeholder="Institution Name; Ex: Ideal School & College" >
 
             </p>
             <br>
-            
-            <p>
-                <label> Passing Year </label>
-                <select class="w3-input" name="hscGroups">
-                    <option>Select Year</option>
-                </select>
-            </p>
-            <br>
-            
             
             <p>
                 <button class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding">Submit</button>

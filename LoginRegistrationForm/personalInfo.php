@@ -11,11 +11,10 @@
 
         <div class="w3-bar">
             <a href="index.php" class="w3-bar-item"> Home </a>
-            <a href="basicinfo.php" class="w3-bar-item"> Basic Info</a> <!-- Add #toregister --> 
             <a href="personalInfo.php" class="w3-bar-item"> Personal Info </a>
-            <a href="cv.php" class="w3-bar-item"> Educational Details </a>
+            <a href="basicinfo.php" class="w3-bar-item"> Address Info</a>
+            <a href="education.php" class="w3-bar-item"> Educational Details </a>
             <a href="professionalTraining.php" class="w3-bar-item"> Professional Training </a>
-
         </div>
 
         <div class="w3-container">

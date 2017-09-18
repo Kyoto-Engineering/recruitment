@@ -8,7 +8,7 @@
     }
  
 ?>
-    
+
     <div class="w3-bar">
             <a href="index.php" class="w3-bar-item"> Home </a>
             <a href="personalInfo.php" class="w3-bar-item"> Personal Info </a>
@@ -17,11 +17,9 @@
             <a href="professionalTraining.php" class="w3-bar-item"> Professional Training </a>
     </div>
 
-
-    
     <div class="container-fluid">
         
-        <header> <h2> Higher Secondary Certificate </h2> </header><br>
+        <header> <h2> Primary School Certificate Information </h2> </header>
         
         <form class="container-fluid">
             
@@ -33,29 +31,18 @@
             <br>
             
             <p>
-                <label> Group </label>
-                <select class="w3-input" name="hscGroups">
-                    <option>Select Major</option>
-                </select>
-            </p>
-            <br>
-            
-            
-            <p>
-                <label>Achieved Grade</label>
-                <input class="w3-input" type="text" placeholder="Achieved Grade in the Exam; Ex:4.99" >
+                <label> Achieved Grade </label>
+                <input class="w3-input" type="number" placeholder="Your achieved grade in the exam. ex: 4.00" >
 
             </p>
             <br>
             
             <p>
-                <label> Passing Year </label>
-                <select class="w3-input" name="hscGroups">
-                    <option>Select Year</option>
-                </select>
+                <label>Passing Year</label>
+                <input class="w3-input" type="number" placeholder="Institution Name; Ex: Ideal School & College" >
+
             </p>
             <br>
-            
             
             <p>
                 <button class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding">Submit</button>
