@@ -48,6 +48,12 @@
 			return $result; 
 		}
 
+		public function getsameadd(){
+			$query  = "SELECT * FROM  tbl_same ORDER BY id DESC";
+			$result = $this->db->select($query);
+			return $result;
+		}
+
 		public function addressInsert($data){
 			$flat 		 = $this->fm->validation($data['flat']);
 			$holding 	 = $this->fm->validation($data['holding']);
@@ -80,14 +86,54 @@
 				$query ="INSERT INTO tbl_address(flat, holding, building, block, area, divId, distId, thId, postId) VALUES ('$flat', '$holding', '$building', '$block', '$area', '$divId', '$distId', '$thId', '$postId')";
 				$result = $this->db->insert($query);
 				if ($result) {
-					$msg = "Your Address has been recorded";
+					$msg = "Your present Address has been recorded";
 					return $msg;
 				}else{
-					$msg = "Your Address not recorded";
+					$msg = "Your present Address not recorded";
 					return $msg;
 				}
 			}
 
+		}
+
+		public function paddressInsert($data){
+
+			$id 	     = $this->fm->validation($data['id']);
+			$flat 		 = $this->fm->validation($data['flat']);
+			$holding 	 = $this->fm->validation($data['holding']);
+			$building 	 = $this->fm->validation($data['building']);
+			$road 		 = $this->fm->validation($data['road']);
+			$block 		 = $this->fm->validation($data['block']);
+			$area 		 = $this->fm->validation($data['area']);
+			
+			$divId 		 = $this->fm->validation($data['divId']);
+			$distId 	 = $this->fm->validation($data['distId']);
+			$thId 		 = $this->fm->validation($data['thId']);
+			$postId 	 = $this->fm->validation($data['postId']);
+			/*$codeId 	 = $this->fm->validation($data['codeId']);*/
+
+			$id		 = mysqli_real_escape_string($this->db->link, $id);
+			$flat		 = mysqli_real_escape_string($this->db->link, $flat);
+			$holding	 = mysqli_real_escape_string($this->db->link, $holding);
+			$building	 = mysqli_real_escape_string($this->db->link, $building);
+			$road		 = mysqli_real_escape_string($this->db->link, $road);
+			$block		 = mysqli_real_escape_string($this->db->link, $block);
+			$area		 = mysqli_real_escape_string($this->db->link, $area);
+
+			$divId		 = mysqli_real_escape_string($this->db->link, $divId);
+			$distId		 = mysqli_real_escape_string($this->db->link, $distId);
+			$thId		 = mysqli_real_escape_string($this->db->link, $thId);
+			$postId		 = mysqli_real_escape_string($this->db->link, $postId);
+
+			$query = "INSERT INTO tbl_paddress(id,flat, holding, building,road, block, area, divId, distId, thId, postId) VALUES('$id','$flat', '$holding', '$building','$road', '$block','$area', 'divId', '$distId', '$thId', '$postId')";
+				$result = $this->db->insert($query);
+				if ($result) {
+					$msg = "Your Permanent Address has been recorded";
+					return $msg;
+				}else{
+					$msg = "Your Permanent Address not recorded";
+					return $msg;
+				}
 		}
 
 		public function infoInsert($data){
@@ -153,5 +199,6 @@
 
 
 		}
+
 	}//main class
 ?>
