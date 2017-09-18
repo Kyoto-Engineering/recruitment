@@ -4,7 +4,7 @@
 <?php 
   $add = new Address();
    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-        $insertAdd = $add->addressInsert($_POST);
+        $infoAdd = $add->personalInfo($_POST);
     }
  
 ?>
@@ -15,22 +15,36 @@
             <a href="basicinfo.php" class="w3-bar-item"> Address Info</a>
             <a href="education.php" class="w3-bar-item"> Educational Details </a>
             <a href="professionalTraining.php" class="w3-bar-item"> Professional Training </a>
-            <a href="workExperience.php" class="w3-bar-item"> Work Experience </a>
         </div>
 
         <div class="w3-container">
             <h2> Personal Information </h2>
-            <form class="w3-container">
+            <?php
+                if (isset($infoAdd)) {
+                    echo $infoAdd;
+                }
+            ?>
+
+             <form action="" method="post" class="w3-container">
                 <p>
                     <label>Full Name</label>
-                    <input class="w3-input" type="text" placeholder="Your Full Name" required>
+                    <input class="w3-input" type="text"  name="perName" placeholder="Your Full Name" required>
                 </p>
                 
                 <br>
-                
+                <p>
+                    <label>Email</label>
+                    <input class="w3-input" type="email"   name="perEmail" placeholder="Your Email" required>
+                </p>
+                 <br>
+                <p>
+                    <label>Phone</label>
+                    <input class="w3-input" type="phone"   name="perPhone"  placeholder="Your Phone" required>
+                </p>
+                <br>
                 <p>
                     <label> Date of Birth </label>
-                    <input class="w3-input" type="date" placeholder="Your Birthdate" required>
+                    <input class="w3-input" type="date"   name="dob" placeholder="Your Birthdate" required>
                 </p>
                 
                 <br>
@@ -38,15 +52,20 @@
 
                 <p>
                     <label> <b> Gender </b> </label> <br>
-                    <input class="w3-radio" type="radio" name="gender" value="male" checked>
+                    <input class="w3-radio" type="radio"   name="gender" value="male" checked>
                     <label>Male</label>
                     &nbsp;
-                    <input class="w3-radio" type="radio" name="gender" value="female">
+                    <input class="w3-radio" type="radio"   name="gender" value="female">
                     <label>Female</label>
                 </p>
                 
                 <br>
+                 <p>
+                    <label> National ID </label>
+                    <input class="w3-input" id="nid" type="number"  name="nId" required placeholder="National ID card no">
+                </p>
                 
+                <br>
 
                 <p>
                     <label> <b> Marital Status </b> </label> <br>
@@ -58,18 +77,9 @@
                 </p>
                 
                 <br>
-                
-
+                                  
                 <p>
-                    <label> National ID </label>
-                    <input class="w3-input" id="nid" type="number" required placeholder="National ID card no">
-                </p>
-                
-                <br>
-                
-
-                <p>
-                    <button class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding">Send</button>
+                    <button class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding" type="submit" name="submit">Submit</button>
                 </p>
             </form>
         </div>

@@ -55,7 +55,7 @@
                 
                                 
                 <p>
-                    <button class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding">Submit</button>
+                    <button class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding" type="submit" name="submit" class="btn btn-default">Submit</button>
                 </p>
                 
             </form>
