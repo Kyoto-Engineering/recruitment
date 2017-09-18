@@ -25,16 +25,41 @@
         
         <div class="w3-container">
             <h3> Welcome to Kyoto Recruitment Portal</h3>
-            <p> Complete the following steps to complete your CV. Without completing CV, there will be no job interview. You have to provide
-                the following informations.
-            </p>
-            <ol>
-                <li> Your <b> Basic Information </b>. </li>
-                <li> Your <b> Personal Infomation </b>. </li>
-                <li> Your <b> Educational Details </b>. </li>
-            </ol>
             
-            <p> If you have received/attended any kind of professional training you can add that to your CV in the <a href="professionalTraining.php">professional training</a>  section.</p>
+            <br>
+            
+            <div>
+                <p>
+                    Complete the following steps to complete your CV. Without completing CV, there will be no job interview. You <strong>must</strong> provide the following informations.
+                </p>
+
+                <br>
+
+                <ol>
+                    <li> Your <b> Personal</b> Infomation. </li>
+                    <li> Information about your <b> Address</b>. </li>
+                    <li> Your <b> Educational </b> details. </li>
+                </ol>
+
+            </div>
+            
+            <br>
+            
+            <div>
+                <p>
+                    <b> You should provide the following informations only if you meet those information criteria.</b>
+                </p>
+                
+                <br>
+                
+                <p> If you have received/attended any kind of professional training you can add that to your CV in the <a href="professionalTraining.php">professional training</a>  section.</p>
+
+                <br>
+
+                <p>
+                    If you have worked in any company in the past, you can add those informations in the <a href="workExperience.php"> Work Experience</a> section.
+                </p>
+            </div>
             
         </div>
        <br> <br>
