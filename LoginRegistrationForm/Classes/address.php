@@ -49,24 +49,35 @@
 		}
 
 		public function addressInsert($data){
+			$flat 		 = $this->fm->validation($data['flat']);
+			$holding 	 = $this->fm->validation($data['holding']);
+			$building 	 = $this->fm->validation($data['building']);
+			$block 		 = $this->fm->validation($data['block']);
+			$area 		 = $this->fm->validation($data['area']);
 			
 			$divId 		 = $this->fm->validation($data['divId']);
 			$distId 	 = $this->fm->validation($data['distId']);
 			$thId 		 = $this->fm->validation($data['thId']);
 			$postId 	 = $this->fm->validation($data['postId']);
-			$codeId 	 = $this->fm->validation($data['codeId']);
+			/*$codeId 	 = $this->fm->validation($data['codeId']);*/
+
+			$flat		 = mysqli_real_escape_string($this->db->link, $flat);
+			$holding	 = mysqli_real_escape_string($this->db->link, $holding);
+			$building	 = mysqli_real_escape_string($this->db->link, $building);
+			$block		 = mysqli_real_escape_string($this->db->link, $block);
+			$area		 = mysqli_real_escape_string($this->db->link, $area);
 
 			$divId		 = mysqli_real_escape_string($this->db->link, $divId);
 			$distId		 = mysqli_real_escape_string($this->db->link, $distId);
 			$thId		 = mysqli_real_escape_string($this->db->link, $thId);
 			$postId		 = mysqli_real_escape_string($this->db->link, $postId);
-			$codeId		 = mysqli_real_escape_string($this->db->link, $codeId);
+			
 
-			if ($divId == "" || $distId == "" || $thId == "" || $postId == "" || $codeId == "") {
+			if ($holding == "" || $block == "" || $divId == "" || $distId == "" || $thId == "" || $postId == "") {
 				$msg = "Fill ALL Address";
 				return $msg;
 			} else{
-				$query ="INSERT INTO tbl_address(divId, distId, thId, postId, codeId) VALUES ('$divId', '$distId', '$thId', '$postId', '$codeId')";
+				$query ="INSERT INTO tbl_address(flat, holding, building, block, area, divId, distId, thId, postId) VALUES ('$flat', '$holding', '$building', '$block', '$area', '$divId', '$distId', '$thId', '$postId')";
 				$result = $this->db->insert($query);
 				if ($result) {
 					$msg = "Your Address has been recorded";
@@ -104,6 +115,42 @@
 					return $msg;
 				}
 			}
+
+		}
+		public function personalInfo($data){
+			$perName 		= $this->fm->validation($data['perName']);
+			$perEmail 		= $this->fm->validation($data['perEmail']);
+			$perPhone 		= $this->fm->validation($data['perPhone']);
+			$dob 			= $this->fm->validation($data['dob']);
+			$gender 		= $this->fm->validation($data['gender']);
+			$nId 		= $this->fm->validation($data['nId']);
+			$maritalStatus 	= $this->fm->validation($data['maritalStatus']);
+
+
+			$perName = mysqli_real_escape_string($this->db->link, $perName);
+			$perEmail = mysqli_real_escape_string($this->db->link, $perEmail);
+			$perPhone = mysqli_real_escape_string($this->db->link, $perPhone);
+			$dob = mysqli_real_escape_string($this->db->link, $dob);
+			$gender = mysqli_real_escape_string($this->db->link, $gender);
+			$nId = mysqli_real_escape_string($this->db->link, $nId);
+			$maritalStatus = mysqli_real_escape_string($this->db->link, $maritalStatus);
+
+			if ($perName == "" || $perEmail == "" || $perPhone == "" || $dob == "" || $gender == "" || $nId == "" || $maritalStatus == "") {
+
+				$msg = "Field Must Not be Empty!!";
+				return $msg;
+			}else{
+				$query = "INSERT INTO tbl_personalinfo(perName, perEmail, perPhone, dob, gender, nId, maritalStatus) VALUES('$perName', '$perEmail', '$perPhone', '$dob', '$gender', '$nId', '$maritalStatus')";
+				$result = $this->db->insert($query);
+				if ($result) {
+					$msg = "Personal Info recorded";
+					return $msg;
+				}else{
+					$msg = "Personal Info not recorded";
+					return $msg;
+				}
+			}
+
 
 		}
 	}//main class
