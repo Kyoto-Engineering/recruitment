@@ -36,8 +36,13 @@
         </div> <br>
         
         
+        <div class="w3-container">
+            <nav>
+                <a href="../create.php"> Go to Create </a>
+            </nav>
+        </div>
         
-        
+        <br>
         
         <div id="adminForm">
             <h3 id="Header"> Job Advertisement Form</h3>
@@ -143,10 +148,10 @@
                 
                 <div class="form-group" style="padding:2px">
                   <label for="usr">Pre-requisite For Joining:</label>
-                  <input type="text" name="pre-requisite" class="form-control" id="usr">
+                    <textarea type="text" name="pre-requisite" class="form-control" id="usr" placeholder="Pre-requisite for this job"> </textarea>
                 </div>
                 
-                <button type="submit" class="btn btn-default" style="padding:2px">Submit</button>
+                <button type="submit" class="w3-button w3-block w3-section w3-green w3-ripple w3-padding" style="padding:2px">Submit</button>
                 
             </form>
         </div> &nbsp; <br> 

@@ -18,7 +18,7 @@
         </div>
 
     
-        <div>
+        <div id="adminForm">
             <h2>Present Address</h2>
             <br>
             <form class="w3-container">
@@ -64,58 +64,48 @@
                 
                 <br>
                 
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Division
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li class="dropdown-header">Division</li>
-                      <li>Dhaka</li> <!-- Dhaka -->
-                    </ul>
-                </div>
+                <p>
+                    <label> Division </label>
+                    <select class="w3-input" name="division">
+                        <option>Select Division </option>
+                    </select>
+                </p>
                 
                 <br>
                 
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">District
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li class="dropdown-header">District</li>
-                      <li>Gazipur</li> <!-- Dhaka -->
-                    </ul>
-                </div>
+                <p>
+                    <label> District </label>
+                    <select class="w3-input" name="district">
+                        <option>Select District </option>
+                    </select>
+                </p>
                 
                 <br>
                 
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Thana
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li class="dropdown-header">Thana</li>
-                      <li>Kaliakoir</li> <!-- Dhaka -->
-                    </ul>
-                </div>
+                <p>
+                    <label> Thana </label>
+                    <select class="w3-input" name="thana">
+                        <option>Select Thana </option>
+                    </select>
+                </p>
                 
                 <br>
                 
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Post Code
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li class="dropdown-header">Post Code</li>
-                      <li>1701</li> <!-- Dhaka -->
-                    </ul>
-                </div>
+                <p>
+                    <label> Post Code </label>
+                    <select class="w3-input" name="postCode">
+                        <option>Select Post Code </option>
+                    </select>
+                </p>
                 
                 <br>
                 
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Post Office
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li class="dropdown-header">Division</li>
-                      <li>Kaliakoir</li> <!-- Dhaka -->
-                    </ul>
-                </div>
+                <p>
+                    <label> Post Office </label>
+                    <select class="w3-input" name="postOffice">
+                        <option>Select Post Office </option>
+                    </select>
+                </p>
                 
                 <br>
                 

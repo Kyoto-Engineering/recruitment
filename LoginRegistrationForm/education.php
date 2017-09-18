@@ -9,7 +9,7 @@
  
 ?>
 
-        <div class="w3-bar">
+        <div class="w3-bar" style="margin:10px">
             <a href="index.php" class="w3-bar-item"> Home </a>
             <a href="personalInfo.php" class="w3-bar-item"> Personal Info </a>
             <a href="basicinfo.php" class="w3-bar-item"> Address Info</a>
@@ -19,56 +19,75 @@
 
         <div class="w3-container" style="margin:10px">
             
-            <div class="row">
-                <header> <h2> Schooling Informations </h2></header> <br>
-                <div class="col-sm-1">
-                    <button> <a href="primarySchooling.php"> Primary Schooling (P.S.C) </a> </button>
+            <div class="w3-container">
+                                
+                            
+                <div>
+                    <label> Primary Schooling Information </label>
+                    <select class="w3-input" name="primarySchooling">
+                        <option>Select only your highest achieved degree </option>
+                        <option> <a href="primarySchooling.php"> Primary Schooling (P.S.C) </a> </option>
+                        <option> <a href="juniorSchooling.php"> Junior Schooling (J.S.C) </a> </option>
+                        <option>  Not Attended any of these </option>
+                    </select>
                 </div>
-                
-                <div class="col-sm-1">
-                    <button> <a href="juniorSchooling.php"> Junior Schooling (J.S.C) </a> </button>
-                </div>
-                
-                <div class="col-sm-1">
-                    <button> <a href="secondarySchooling.php"> Secondary Schooling (S.S.C) </a> </button>
-                </div>
-                
-                <div class="col-sm-1">
-                    <button> O-Level </button>
-                </div>
-                
+                <br>
             </div>
             
-            <div class="row">
-                <header> <h2> Higher Secondary Schooling </h2></header><br>
-                <div class="col-sm-4">
-                    <button> <a href="hsc.php"> Higher Secondary (H.S.C) </a> </button>
+            <br>
+            
+            <div class="w3-container">
+                <br>
+                <div>
+                    <label> Secondary Schooling Information </label>
+                    <select class="w3-input" name="secondarySchooling">
+                        <option>Select only your highest achieved degree </option>
+                        <option> <a href="secondarySchooling.php"> Secondary Schooling (S.S.C) </a> </option>
+                        <option> <a href="oLevel.php"> Junior Schooling (J.S.C) </a> </option>
+                        <option>  <a href="vocational.php"> Vocational </a> </option>
+                    </select>
                 </div>
-                
-                <div class="col-sm-4">
-                    <button> Diploma</button>
-                </div>
-                
-                <div class="col-sm-4">
-                    <button> A-Level </button>
-                </div>
-                
+                <br>
             </div>
             
-            <div class="row">
-                <header> <h2>Graduation</h2> </header><br>
-                <div class="col-sm-12">
-                    <button> <a href="graduation.php"> Bachelor </a> </button>
+            <div class="w3-container">
+                <br>                
+                <div>
+                    <label> Higher Secondary Schooling Information </label>
+                    <select class="w3-input" name="higherSecondarySchooling">
+                        <option>Select only your highest achieved degree </option>
+                        <option> <a href="hsc.php"> Higher Secondary (H.S.C) </a> </option>
+                        <option> <a href="diploma.php"> Diploma </a> </option>
+                        <option>  <a href="aLevel.php"> A - Level </a> </option>
+                    </select>
                 </div>
+                <br>
             </div>
             
-            <div class="row">
-                <header> <h2>Post-Graduation</h2> </header><br>
-                <div class="col-sm-12">
-                    <button> <a href="masters.php"> Post - Graduation </a> </button>
+            <div class="w3-container">
+                <br>
+                <div>
+                    <label> Graduation Information </label>
+                    <select class="w3-input" name="graduation">
+                        <option>Select only your highest achieved degree </option>
+                        
+                    </select>
                 </div>
+                <br>
             </div>
-            
+            <br>
+            <div class="w3-container">
+                <br>
+                <div>
+                    <label> Post-Graduation Information </label>
+                    <select class="w3-input" name="graduation">
+                        <option>Select only your highest achieved degree </option>
+                        
+                    </select>
+                </div>
+                <br>
+            </div>
+            <br>
         </div>
 
 
