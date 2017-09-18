@@ -155,7 +155,7 @@ class Signup
 			$logmsg = "Username Or Password Must Not be Empty!!";
 			return $logmsg;
 		}else{
-			$query = "SELECT * FROM tbl_user_reg WHERE email = '$email' AND phone = '$phone'";
+			$query = "SELECT * FROM tbl_user_reg WHERE email = '$email' AND phone = '$phone' AND status = '1'";
 			$result = $this->db->select($query);
 			if ($result !=false) {
 				$value = $result->fetch_assoc();

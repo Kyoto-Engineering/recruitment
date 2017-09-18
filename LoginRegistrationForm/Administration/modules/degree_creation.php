@@ -40,6 +40,7 @@
                     <input type="text" class="form-control" name="degreeName" id="degree">
                   </div>
                   <button type="submit" name="submit" class="btn btn-default">Submit</button>
+                 
                 </form>
         </div> <br> &nbsp;
         
