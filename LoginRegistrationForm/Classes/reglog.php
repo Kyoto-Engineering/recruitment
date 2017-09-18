@@ -1,6 +1,10 @@
+<?php
+ include_once "lib/Session.php";
+  Session::checkLogin();
+  ?>
+
 <?php include_once "lib/Database.php"; ?>
 <?php include_once "helpers/Format.php"; ?>
-<?php include_once "lib/Session.php"; ?>
 <?php
 /**
 * class for sign up & sign ion
@@ -151,7 +155,7 @@ class Signup
 			$logmsg = "Username Or Password Must Not be Empty!!";
 			return $logmsg;
 		}else{
-			$query = "SELECT * FROM tbl_user_reg WHERE email = '$email' AND phone = '$phone'";
+			$query = "SELECT * FROM tbl_user_reg WHERE email = '$email' AND phone = '$phone' AND status = '1'";
 			$result = $this->db->select($query);
 			if ($result !=false) {
 				$value = $result->fetch_assoc();

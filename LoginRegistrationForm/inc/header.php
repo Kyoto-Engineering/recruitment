@@ -1,6 +1,6 @@
 <?php 
      include 'lib/Session.php';
-        Session::init();
+       Session::checkSession();
 ?>
 <?php 
     
@@ -63,7 +63,7 @@
                     </ul>
                     
                     <ul class="nav navbar-nav navbar-right">
-                      <li><a href="#"><i class="glyphicon glyphicon-user">&nbsp;Hi&nbsp;<?php echo Session::get('userName');?></i></a></li>
+                      <li><a href="#"><i class="glyphicon glyphicon-user"> Hi <?php echo Session::get('userName');?></i></a></li>
                             <?php
                                 if (isset($_GET['action']) && $_GET['action'] == "logout") {
                                     Session::destroy();                               

@@ -78,5 +78,33 @@
 			}
 
 		}
+
+		public function infoInsert($data){
+			$tInstitution 	= $this->fm->validation($data['tInstitution']);
+			$trainingName 	= $this->fm->validation($data['trainingName']);
+			$tTopic 		= $this->fm->validation($data['tTopic']);
+			$tLenth 		= $this->fm->validation($data['tLenth']);
+
+			$tInstitution = mysqli_real_escape_string($this->db->link, $tInstitution);
+			$trainingName = mysqli_real_escape_string($this->db->link, $trainingName);
+			$tTopic		  = mysqli_real_escape_string($this->db->link, $tTopic);
+			$tLenth		  = mysqli_real_escape_string($this->db->link, $tLenth);
+
+			if ($tInstitution == "" || $trainingName == "" || $tTopic == ""	|| $tLenth == "") {
+				$msg = "Field Must Not be Empty!!";
+				return $msg;
+			}else{
+				$query = "INSERT INTO tbl_training(tInstitution, trainingName, tTopic, tLenth) VALUES('$tInstitution', '$trainingName', '$tTopic', '$tLenth')";
+				$result = $this->db->insert($query);
+				if ($result) {
+					$msg = "Inserted";
+					return $msg;
+				}else{
+					$msg = "Not Inserted";
+					return $msg;
+				}
+			}
+
+		}
 	}//main class
 ?>
