@@ -16,7 +16,7 @@
             <a href="basicinfo.php" class="w3-bar-item"> Address Info</a>
             <a href="education.php" class="w3-bar-item"> Educational Details </a>
             <a href="professionalTraining.php" class="w3-bar-item"> Professional Training </a>
-            <a href="workExperience.php" class="w3-bar-item"> WorK Experience </a>
+            <a href="workExperience.php" class="w3-bar-item"> Work Experience </a>
         </div>
 
 
@@ -38,7 +38,7 @@
                 <br>
                 
                 <p>
-                    <label>Training Length (in Monthss)</label>
+                    <label>Training Length (in Months)</label>
                     <input class="w3-input" type="number" placeholder="Length of the training" required>
                     
                     <!--<input class="w3-radio" type="radio" name="length" value="day">
@@ -55,7 +55,7 @@
                 
                                 
                 <p>
-                    <button class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding">Submit</button>
+                    <button class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding" type="submit" name="submit" class="btn btn-default">Submit</button>
                 </p>
                 
             </form>

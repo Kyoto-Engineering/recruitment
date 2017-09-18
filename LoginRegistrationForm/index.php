@@ -20,7 +20,7 @@
             <a href="basicinfo.php" class="w3-bar-item"> Address Info</a>
             <a href="education.php" class="w3-bar-item"> Educational Details </a>
             <a href="professionalTraining.php" class="w3-bar-item"> Professional Training </a>
-            <a href="workExperience.php" class="w3-bar-item"> WorK Experience </a>
+            <a href="workExperience.php" class="w3-bar-item"> Work Experience </a>
         </div>
         
         <div>
