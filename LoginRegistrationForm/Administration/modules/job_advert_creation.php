@@ -39,6 +39,8 @@
         <div class="w3-container">
             <nav>
                 <a href="../create.php"> Go to Create </a>
+                &nbsp;
+                <a href="joblist.php"> See Job List </a>
             </nav>
         </div>
         
@@ -136,7 +138,7 @@
                 
                 <div class="form-group" style="padding:2px">
                     <div class='input-group date' id='datetimepicker1'> <b> Last date of Application </b>
-                        <input type='date' name="joblocation" class="form-control" />
+                        <input type='date' name="ldApplication" class="form-control" />
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -161,10 +163,10 @@
                 <div class="form-group" style="padding:2px">
                   <label for="usr">Pre-requisite For Joining:</label>
 
-                <textarea type="text" name="pre-requisite" class="form-control" id="usr" placeholder="Pre-requisite for this job"> </textarea>
+                <textarea type="text" name="prerequisite" class="form-control" id="usr" placeholder="Pre-requisite for this job"> </textarea>
                 </div>
                 
-                <button type="submit" class="w3-button w3-block w3-section w3-green w3-ripple w3-padding" style="padding:2px">Submit</button>
+                <button type="submit" name="submit" class="w3-button w3-block w3-section w3-green w3-ripple w3-padding" style="padding:2px">Submit</button>
 
                 
             </form>

@@ -112,7 +112,7 @@
 			$postId 	 = $this->fm->validation($data['postId']);
 			/*$codeId 	 = $this->fm->validation($data['codeId']);*/
 
-			$id		 = mysqli_real_escape_string($this->db->link, $id);
+			$id		 	 = mysqli_real_escape_string($this->db->link, $id);
 			$flat		 = mysqli_real_escape_string($this->db->link, $flat);
 			$holding	 = mysqli_real_escape_string($this->db->link, $holding);
 			$building	 = mysqli_real_escape_string($this->db->link, $building);
@@ -163,7 +163,8 @@
 			}
 
 		}
-		public function personalInfo($data){
+		public function personalInfo($data, $userId){
+			
 			$perName 		= $this->fm->validation($data['perName']);
 			$perEmail 		= $this->fm->validation($data['perEmail']);
 			$perPhone 		= $this->fm->validation($data['perPhone']);
@@ -172,7 +173,7 @@
 			$nId 		= $this->fm->validation($data['nId']);
 			$maritalStatus 	= $this->fm->validation($data['maritalStatus']);
 
-
+			
 			$perName = mysqli_real_escape_string($this->db->link, $perName);
 			$perEmail = mysqli_real_escape_string($this->db->link, $perEmail);
 			$perPhone = mysqli_real_escape_string($this->db->link, $perPhone);
@@ -186,7 +187,7 @@
 				$msg = "Field Must Not be Empty!!";
 				return $msg;
 			}else{
-				$query = "INSERT INTO tbl_personalinfo(perName, perEmail, perPhone, dob, gender, nId, maritalStatus) VALUES('$perName', '$perEmail', '$perPhone', '$dob', '$gender', '$nId', '$maritalStatus')";
+				$query = "INSERT INTO tbl_personalinfo(userId, perName, perEmail, perPhone, dob, gender, nId, maritalStatus) VALUES('$userId','$perName', '$perEmail', '$perPhone', '$dob', '$gender', '$nId', '$maritalStatus')";
 				$result = $this->db->insert($query);
 				if ($result) {
 					$msg = "Personal Info recorded";

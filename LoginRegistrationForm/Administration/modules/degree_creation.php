@@ -5,6 +5,13 @@
         $usercv = $allM->degreeCreate($_POST);
     }
 ?>
+<?php
+    //method call for delete cart product
+    if (isset($_GET['deldeg'])) {
+        $deldeg = preg_replace('/[^-a-zA-Z0-9_]/', '', $_GET['deldeg']);
+        $deldeg = $allM->delDegByid($deldeg);
+    }
+?>
 <!DOCTYPE html>
 
 <html>
@@ -37,8 +44,43 @@
         
         <br>
         
-        <div id="adminForm">
-            <h3 id="Header"> Degree Input Form</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <span style="color: green">
+                    <?php
+                        if (isset($deldeg)) {
+                            echo $deldeg;
+                        }
+                    ?>
+                </span>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Degree</th>
+                        <th>Action</th>
+                        
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                    <?php
+                       $getdeg = $allM->getMinimumedu();
+                       if ($getdeg) {
+                           while ($value = $getdeg->fetch_assoc()) {
+                              
+                         
+                    ?>
+                      <tr>
+                        <td><?php echo $value['degName'];?></td>
+                        <td><a href=""><span class="glyphicon glyphicon-edit"></span></a>&nbsp;||&nbsp;<a
+                        onclick="return confirm('Are You Sure To Delete!');" href="?deldeg=<?php echo $value['degId'];?>"><span class="glyphicon glyphicon-remove"></span></a></td>
+                      </tr>
+                      <?php } } ?>
+                    </tbody>
+                  </table>
+            </div>
+            <div class="col-md-6">
+                <h3 id="Header"> Degree Input Form</h3>
             <?php
                 if (isset($usercv)) {
                     echo $usercv;
@@ -48,13 +90,15 @@
                <form action="" method="post">
                   <div class="form-group">
                     <label for="degree">Degree Name</label>
-                    <input type="text" class="form-control w3-input" name="degreeName" id="degree">
+                    <input type="text" class="form-control w3-input" name="degName" id="degree">
                   </div>
 
                   <button type="submit" name="submit" class="w3-button w3-block w3-section w3-green w3-ripple w3-padding">Submit</button>
 
                 </form>
-        </div> <br> &nbsp;
+            </div>
+        </div>
+        <br> &nbsp;
         
         <div>
             <footer>

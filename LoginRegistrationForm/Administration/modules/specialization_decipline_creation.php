@@ -1,4 +1,11 @@
 <?php include_once "../../Classes/module.php";?>
+
+<?php
+    $allM = new Module();
+     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        $special = $allM->specializationCreate($_POST);
+    }
+?>
 <!DOCTYPE html>
 
 <html>
@@ -25,13 +32,7 @@
     <![endif]-->
     </head>
     
-  <?php
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-        $job = $allM->createJob($_POST);
-    }
-
-?>   
+ 
     <body>
         
         <div id="banner">
@@ -47,17 +48,52 @@
         </div>
         
         <br>
-        
-        <div id="adminForm">
+    <div class="row">
+    <div class="col-md-6">
+         <table class="table">
+                    <thead>
+                      <tr>
+                      <th>Sl</th>
+                        <th>Department</th>
+                        
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                    <?php
+                      $getsp = $allM->getAllspecializ();
+                       if ($getsp) {
+                        $i=0;
+                           while ($value = $getsp->fetch_assoc()) {
+                              $i++;
+                         
+                    ?>
+                      <tr>
+                      <td><?php echo $i;?></td>
+                        <td><?php echo $value['specialization'];?></td>
+                        
+                      </tr>
+                      </tr>
+                      <?php } } ?>
+                    </tbody>
+                  </table>
+
+    </div>
+        <div class="col-md-6">
             
             <h3 id="Header"> Specialization Input Form</h3><br><br>
+            <?php
+                if (isset($special)) {
+                    echo $special;
+                }
+            ?>
             
             
-            <form  class="w3-container">
+            <form action="" method="post" class="w3-container">
                 
                 <p>
                     <label>Specialization</label>
-                    <input class="w3-input" type="text" placeholder="Specialization" required>
+                    <input class="w3-input" type="text" name="specialization" placeholder="Specialization" required>
                 </p>
                 
                 <br>
@@ -70,7 +106,7 @@
     
             </form>
         </div>
-        
+</div>        
         <div>
             <footer>
                 <p> Copyright &copy; Kyoto Engineering &amp; Automation Ltd.</p>

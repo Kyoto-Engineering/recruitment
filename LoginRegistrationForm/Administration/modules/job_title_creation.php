@@ -1,4 +1,11 @@
 <?php include_once "../../Classes/module.php";?>
+<?php
+    $allM = new Module();
+     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        $jobtitle = $allM->jobTileCreate($_POST);
+    }
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -25,14 +32,7 @@
     <![endif]-->
     </head>
     
-  <?php
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-        $job = $allM->createJob($_POST);
-    }
-
-?>   
-    <body>
+   <body>
         
         <div id="banner">
             <img src="../assets/kyotoBanner.PNG">
@@ -52,12 +52,16 @@
             
             <h3 id="Header"> Job Title Input Form</h3><br><br>
             
-            
-            <form  class="w3-container">
+            <?php
+                if (isset($jobtitle)) {
+                    echo $jobtitle;
+                }
+            ?>
+            <form action="" method="post" class="w3-container">
                 
                 <p>
                     <label>Job Title</label>
-                    <input class="w3-input" type="text" placeholder="Title of the job" required>
+                    <input class="w3-input" type="text" name="jobtitle" placeholder="Title of the job" required>
                 </p>
                 
                 <br>
