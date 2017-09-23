@@ -1,5 +1,13 @@
 <?php include_once "inc/header.php";?>
 <?php include_once "Classes/address.php";?>
+<?php include_once "Classes/frontclass.php";?>
+
+<?php
+    $allF = new Front();
+    /* if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        $userjob = $allM->jobInput($_POST);
+    }*/
+?>
 
 <?php 
   $add = new Address();
@@ -14,16 +22,8 @@
         
 <br/><br/>
         
-        <div class="w3-bar">
-            <a href="index.php" class="w3-bar-item"> Home </a>
-            <a href="personalInfo.php" class="w3-bar-item"> Personal Info </a>
-            <a href="basicinfo.php" class="w3-bar-item"> Address Info</a>
-            <a href="education.php" class="w3-bar-item"> Educational Details </a>
-            <a href="professionalTraining.php" class="w3-bar-item"> Professional Training </a>
-            <a href="workExperience.php" class="w3-bar-item"> Work Experience </a>
-        </div>
         
-        <div class="w3-container">
+        <div class="container">
             <h3> Welcome to Kyoto Recruitment Portal</h3>
             
             <br>
@@ -44,21 +44,58 @@
             </div>
             
             <br>
-            
+            <header>
+                <h3>Choose Your Job From List</h3>
+            </header>
             <div>
-                <p>
-                    <b> You should provide the following informations only if you meet those information criteria.</b>
-                </p>
-                
-                <br>
-                
-                <p> If you have received/attended any kind of professional training you can add that to your CV in the <a href="professionalTraining.php">professional training</a>  section.</p>
+                <table class="table">
+    <thead>
+      <tr>
+        <th>SL</th>
+        <th>Job Title</th>
+        <th>Department</th>
+        <th>Job level</th>
+        <th>Last date of Application</th>
+        <th>Education</th>
+        
+        <th>Monthly Compansation</th>
+        <th>Expected Joining Date</th>
+        <th>Pre-requisite For Joining:</th>
+        <th>Action</th>
+        
 
-                <br>
+      </tr>
+    </thead>
+    <tbody>
+    <?php
+        $getAjobs = $allF->getjobList();
+        if ($getAjobs) {
+            $i = 0;
+            while($value = $getAjobs->fetch_assoc()){
+                $i++;
 
-                <p>
-                    If you have worked in any company in the past, you can add those informations in the <a href="workExperience.php"> Work Experience</a> section.
-                </p>
+    ?>
+      <tr>
+        <td><?php echo $i ;?></td>
+        <td><?php echo $value['jobtitle'];?></td>
+        <td><?php echo $value['deptName'];?></td>
+        <td><?php echo $value['levelName'];?></td>
+        <td><?php echo $value['ldApplication'];?></td>
+        <td><?php echo $value['degName'];?></td>
+        <td><?php echo $value['mcomp'];?></td>
+        <td><?php echo $value['expDate'];?></td>
+        <td><?php echo $value['prerequisite'];?></td>
+        <td><?php echo $value['joblocation'];?></td>
+
+        <td>
+        <a href="apply.php?id=<?php echo $value['jsId'];?>"><button type="button" class="btn btn-primary">Apply</button></a>
+        </td>
+       
+
+      </tr>
+   <?php } } ?>
+    </tbody>
+  </table>
             </div>
             
         </div>

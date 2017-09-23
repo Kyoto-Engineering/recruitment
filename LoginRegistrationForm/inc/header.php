@@ -17,21 +17,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Kyoto Recruitment System</title>
-      
-      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-      <link rel="stylesheet" href="../css/body.css">
+
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
     <link href="css/bootstrap.min.css" rel="stylesheet">
-   
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -57,8 +45,13 @@
                   <!-- Collect the nav links, forms, and other content for toggling -->
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                      <li><a href="#">Career</a></li>
-                      <li><a href="#">Why Kyoto</a></li>
+                      <li><a href="index.php" class="w3-bar-item"> Home </a></li>
+                      <li><a href="personalInfo.php" class="w3-bar-item"> My Info </a></li>
+                      <li><a href="basicinfo.php" class="w3-bar-item">My Address</a></li>
+                      <li><a href="#" class="w3-bar-item">Resume</a></li>
+                      <li><a href="education.php" class="w3-bar-item"> Educational Details </a></li>
+                      <li><a href="professionalTraining.php" class="w3-bar-item"> Professional Training </a></li>
+                      <li><a href="workExperience.php" class="w3-bar-item">My Work Experience </a></li>
                       
                     </ul>
                     
@@ -75,7 +68,9 @@
                     </ul>
                       
                       <!-- Slider begins here -->
-                          <img src="../assets/images/recruitment1.jpg" alt="Banner">
+                      <div class="container-fluid">
+                          <img class="img-responsive" src="../assets/images/recruitment1.jpg" alt="Banner">
+                      </div>
                       <!-- Slider ends here-->
                   </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
