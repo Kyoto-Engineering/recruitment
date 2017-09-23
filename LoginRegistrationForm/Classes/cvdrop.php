@@ -71,4 +71,9 @@
 		$result = $this->db->select($query);
 		return $result;
 	}
+	public function getDept(){
+		$query = "SELECT * FROM tbl_department ORDER BY dId DESC";
+		$result = $this->db->select($query);
+		return $result;
+	}
 }//main class close

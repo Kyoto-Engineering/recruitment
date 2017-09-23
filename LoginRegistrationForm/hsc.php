@@ -1,69 +1,69 @@
 <?php include_once "inc/header.php";?>
-<?php include_once "Classes/address.php";?>
+<?php include_once "Classes/educationc.php";?>
+<?php include_once "Classes/cvdrop.php";?>
 
 <?php 
-  $add = new Address();
+  $edu = new Education();
+  $userId = Session::get("userId");
    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-        $insertAdd = $add->addressInsert($_POST);
+        $inserthsc = $edu->hscInsert($_POST, $userId);
     }
  
 ?>
     
-    <div class="w3-bar">
-            <a href="index.php" class="w3-bar-item"> Home </a>
-            <a href="personalInfo.php" class="w3-bar-item"> Personal Info </a>
-            <a href="basicinfo.php" class="w3-bar-item"> Address Info</a>
-            <a href="education.php" class="w3-bar-item"> Educational Details </a>
-            <a href="professionalTraining.php" class="w3-bar-item"> Professional Training </a>
-    </div>
+    
 
 
     
-    <div class="container-fluid">
+    <div class="container">
+        <a href="education.php"><button type="submit" name="submit" class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding">Go Back</button></a>  
+        <header> <h2> HSC Educational Details </h2> </header> <br>
         
-        <header> <h2> Higher Secondary Certificate </h2> </header><br>
-        
-        <form class="container-fluid">
-            
-            <p>
-                <label>Name of Institution</label>
-                <input class="w3-input" type="text" placeholder="Institution Name; Ex: Ideal School & College" >
-
-            </p>
-            <br>
-            
-            <p>
-                <label> Group </label>
-                <select class="w3-input" name="hscGroups">
-                    <option>Select Major</option>
+        <form action="" method="post">
+             <div class="form-group">
+                <label for="exampleFormControlInput1">Name of Institution</label>
+                <input type="text" class="form-control" name="name" id="exampleFormControlInput1" placeholder="Your Institute Name">
+          </div>
+          <div class="form-group">
+                <label for="exampleFormControlInput1">Achieved Grade</label>
+                <input type="text" class="form-control" name="cgpa" id="exampleFormControlInput1" placeholder="Your Achived Grade ex:-5.00">
+          </div>
+  <div class="form-group">
+                <label for="exampleFormControlSelect1">Passing Year</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="pyearid">
+                <option>Select Year</option>
+                 <?php
+                    $cvd = new Curriculum();
+                    $getyr = $cvd->getYear();
+                    if ($getyr) {
+                    while ($value = $getyr->fetch_assoc()) {
+                   
+                ?>
+                   <option value="<?php echo $value['pyearid'];?>" ><?php echo $value['pyear'];?></option>
+                  <?php } } ?>
                 </select>
-            </p>
-            <br>
-            
-            
-            <p>
-                <label>Achieved Grade</label>
-                <input class="w3-input" type="text" placeholder="Achieved Grade in the Exam; Ex:4.99" >
-
-            </p>
-            <br>
-            
-            <p>
-                <label> Passing Year </label>
-                <select class="w3-input" name="hscGroups">
-                    <option>Select Year</option>
+              </div>
+ <div class="form-group">
+                <label for="exampleFormControlSelect1">Education Board</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="divId">
+                <option>Select Board/Controlling Authority</option>
+                 <?php
+                    $cvd = new Curriculum();
+                    $getyr = $cvd->getDivission();
+                    if ($getyr) {
+                    while ($value = $getyr->fetch_assoc()) {
+                   
+                ?>
+                   <option value="<?php echo $value['divId'];?>" ><?php echo $value['divName'];?></option>
+                  <?php } } ?>
                 </select>
+              </div>
+             <p>
+                <button type="submit" name="submit" class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding">Submit</button>  
             </p>
-            <br>
-            
-            
-            <p>
-                <button class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding">Submit</button>
-                
-            </p>
-            
-        </form>
+</form>
     </div>
+
 
 
 
