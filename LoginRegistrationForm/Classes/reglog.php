@@ -68,7 +68,7 @@ class Signup
 							?>
                                 <script>
                                 alert('Please check your email for account verification!');
-                                window.location.href='LoginRegistrationForm/signup.php#tologin?success';
+                                window.location.href='login.php#tologin?success';
                                 </script>
                             <?php
 
