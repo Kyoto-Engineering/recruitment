@@ -1,14 +1,13 @@
 <?php
+include_once 'dbconfig.php';
 
- include_once 'dbconfig.php';
-
-$phone = $_GET['phone'];
+$user_contact = $_GET['phone'];
 
 
 $count=0;
 	if($count == 0)
 	{
-		$sql="UPDATE tbl_user_reg SET status ='1' WHERE phone='$phone'";
+		$sql="UPDATE tbl_user_reg SET status = '1' WHERE phone = '$user_contact'";
 		mysql_query($sql);
 		?>
 		<script>
@@ -30,10 +29,3 @@ $count=0;
         </script>
 		<?php
 	}
-
-
-?>
-
-
-	
-				

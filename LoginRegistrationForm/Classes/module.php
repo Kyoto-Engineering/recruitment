@@ -1,6 +1,6 @@
-<?php include_once "../../lib/Database.php"; ?>
-<?php include_once "../../helpers/Format.php"; ?>
-<?php include_once "../../lib/Session.php"; ?>
+<?php include_once "../lib/Database.php"; ?>
+<?php include_once "../helpers/Format.php"; ?>
+<?php include_once "../lib/Session.php"; ?>
 
 <?php
 	/**
@@ -293,6 +293,15 @@
 			$result = $this->db->select($query);
 			return $result;
 		}
-		   
+		
+		public function getCadidateList(){
+				$query = "SELECT p.*, c.levelName, j.jobtitle, r.degName, s.deptName, a.userName
+				FROM tbl_apply as p, tbl_job_level as c, tbl_jobtitle as j, tbl_degree as r, tbl_department as s, tbl_user_reg as a
+				WHERE p.levelId = c.levelId AND p.jId = j.jId AND p.degId = r.degId AND p.dId = s.dId AND p.userId = a.regId
+				ORDER BY p.id DESC";
+
+				$value = $this->db->select($query);
+				return $value;
+		}		   
 
 } ?>

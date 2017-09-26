@@ -68,9 +68,7 @@
                     </ul>
                       
                       <!-- Slider begins here -->
-                      <div class="container-fluid">
-                          <img class="img-responsive" src="../assets/images/recruitment1.jpg" alt="Banner">
-                      </div>
+                      
                       <!-- Slider ends here-->
                   </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->

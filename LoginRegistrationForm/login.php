@@ -1,8 +1,10 @@
 <?php include "inc/signhead.php";?>
 <?php include_once "Classes/reglog.php";?>
+<?php //include_once "Classes/cvdrop.php";?>
 
 <?php
       $user = new Signup(); 
+      //$extra = new Curriculum();
 ?>
 
 <?php
@@ -93,9 +95,22 @@
                                     <label for="passwordsignup" class="uname" data-icon="p">Phone</label>
                                     <input id="passwordsignup" name="phone" required="required" type="text" placeholder="Your Phone"/>
                                 </p>
-                              
+                              <p>
                                     <label for="usernamesignup" class="date" >Date Of Birth</label>
                                     <input id="usernamesignup" name="dob" required="required" type="date"/>
+                                </p>
+                                <p>
+                                     <label for="sel1">Specialization</label>
+                                       <select class="form-control" id="sellect" name="spId">
+                                         <option>Select Specialization</option>
+                                                <?php
+                                                 $getsp =  $user->getspecilization();
+                                                    if ($getsp) {
+                                                    while ($value = $getsp->fetch_assoc()) {
+                                                 ?>
+                                <option value="<?php echo $value['spId'];?>" ><?php echo $value['specialization'];?></option>
+                                        <?php } } ?>
+                    </select>
                                 </p>
                                   
                                 <p class="signin button"> 

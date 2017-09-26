@@ -41,8 +41,9 @@ class Signup
 		$email     = mysqli_real_escape_string($this->db->link, $data['email']);
 		$phone     = mysqli_real_escape_string($this->db->link, $data['phone']);
 		$dob       = mysqli_real_escape_string($this->db->link, $data['dob']);
-		
-		if ($userName == "" || $email == "" || $phone == "" || $dob == "" ) {
+		$spId       = mysqli_real_escape_string($this->db->link, $data['spId']);
+
+		if ($userName == "" || $email == "" || $phone == "" || $dob == "" || $spId == "" ) {
 			
 			$msg = "<span style='color:red'>Field Must Not Be Empty!!</span>";
 			return $msg;
@@ -60,7 +61,7 @@ class Signup
 			
 					
 				
-						$query = "INSERT INTO tbl_user_reg(userName, email, phone, dob) VALUES('$userName', '$email', '$phone', '$dob')";
+						$query = "INSERT INTO tbl_user_reg(userName, email, phone, dob, spId) VALUES('$userName', '$email', '$phone', '$dob', '$spId')";
 	    	 			$inserted_row = $this->db->insert($query);
 
 						if($inserted_row){
@@ -155,7 +156,7 @@ class Signup
 			$logmsg = "Username Or Password Must Not be Empty!!";
 			return $logmsg;
 		}else{
-			$query = "SELECT * FROM tbl_user_reg WHERE email = '$email' AND phone = '$phone' AND status = '1'";
+			$query = "SELECT * FROM tbl_user_reg WHERE email = '$email' AND phone = '$phone'";
 			$result = $this->db->select($query);
 			if ($result !=false) {
 				$value = $result->fetch_assoc();

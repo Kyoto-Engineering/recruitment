@@ -8,11 +8,16 @@
         $userjob = $allM->jobInput($_POST);
     }*/
 ?>
-
+                        <div class="container-fluid">
+                          <img class="img-responsive" src="../assets/images/recruitment1.jpg" alt="Banner">
+                         </div>
 <?php 
-  $add = new Address();
-   if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-        $insertAdd = $add->addressInsert($_POST);
+
+    $userId = Session::get("userId");
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+        $jsid = $_POST['jsId'];
+        
+        $addApply = $allF->applyForjob($userId, $jsid);
     }
  
 ?>
@@ -44,24 +49,32 @@
             </div>
             
             <br>
+            <a href="my_jobs.php"><button type="button" class="btn btn-primary" value="">My Applied Jobs</button></a>
             <header>
                 <h3>Choose Your Job From List</h3>
             </header>
             <div>
+            <span style="color:green; font-size: 18px;">
+            <?php
+               if (isset($addApply)) {
+                   echo $addApply;
+            }
+            ?>
+            </span>
                 <table class="table">
     <thead>
       <tr>
-        <th>SL</th>
-        <th>Job Title</th>
-        <th>Department</th>
-        <th>Job level</th>
-        <th>Last date of Application</th>
-        <th>Education</th>
+        <td>SL</td>
+        <td>Job Title</td>
+        <td>Department</td>
+        <td>Job level</td>
+        <td>Last date of Application</td>
+        <td>Education</td>
         
-        <th>Monthly Compansation</th>
-        <th>Expected Joining Date</th>
-        <th>Pre-requisite For Joining:</th>
-        <th>Action</th>
+        <td>Monthly Compansation</td>
+        <td>Expected Joining Date</td>
+        <td>Pre-requisite For Joining:</td>
+        <td>Action</td>
         
 
       </tr>
@@ -88,7 +101,10 @@
         <td><?php echo $value['joblocation'];?></td>
 
         <td>
-        <a href="apply.php?id=<?php echo $value['jsId'];?>"><button type="button" class="btn btn-primary">Apply</button></a>
+        <form action="" method="post">
+        <input type="hidden" name="jsId" value="<?php echo $value['jsId'];?>"/>
+       <input type="submit" name="submit" value="Apply"/>
+        </form>
         </td>
        
 
