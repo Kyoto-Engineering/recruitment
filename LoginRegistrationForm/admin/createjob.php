@@ -118,19 +118,17 @@
                    
                   
                 
-                <div class="form-group" style="padding:2px">
-                    <div class='input-group date' id='datetimepicker1'> <b> Last date of Application </b>
-                        <input type='date' name="ldApplication" class="form-control" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
+               
                 <p> 
                 
                 <div class="form-group" style="padding:2px">
-                  <label for="usr">Monthly Compansation:</label>
-                  <input type="number" name="mcomp" class="form-control" id="compansation">
+                  <label for="usr">Minimum Monthly Compansation:</label>
+                  <input type="number" name="mimcomp" class="form-control" id="compansation">
+                </div>
+                
+                <div class="form-group" style="padding:2px">
+                  <label for="usr">Maximum Monthly Compansation:</label>
+                  <input type="number" name="mxmcomp" class="form-control" id="compansation">
                 </div>
                 
                 <div class="form-group" style="padding:2px">

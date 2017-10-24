@@ -132,9 +132,11 @@
 			$ldApplication = $this->fm->validation($data['ldApplication']);
 			$degId 		= 	$this->fm->validation($data['degId']);
 			//$joblocation 		= 	$this->fm->validation($data['joblocation']);
-			$mcomp 		= 	$this->fm->validation($data['mcomp']);
+			$mimcomp 		= 	$this->fm->validation($data['mimcomp']);
+			$mxmcomp 		= 	$this->fm->validation($data['mxmcomp']);
 			$expDate 	= 	$this->fm->validation($data['expDate']);
-			//$prerequisite = $this->fm->validation($data['prerequisite']);
+			$expDate 	= 	$this->fm->validation($data['expDate']);
+			$prerequisite = $this->fm->validation($data['prerequisite']);
 
 			$jId = mysqli_real_escape_string($this->db->link, $jId);
 			$dId = mysqli_real_escape_string($this->db->link, $dId);
@@ -142,15 +144,17 @@
 			$ldApplication = mysqli_real_escape_string($this->db->link, $ldApplication);
 			$degId = mysqli_real_escape_string($this->db->link, $degId);
 			//$joblocation = mysqli_real_escape_string($this->db->link, $joblocation);
-			$mcomp = mysqli_real_escape_string($this->db->link, $mcomp);
+			$mimcomp = mysqli_real_escape_string($this->db->link, $mimcomp);
+			$mxmcomp = mysqli_real_escape_string($this->db->link, $mxmcomp);
 			$expDate = mysqli_real_escape_string($this->db->link, $expDate);
-			//$prerequisite = mysqli_real_escape_string($this->db->link, $prerequisite);
+			$prerequisite = mysqli_real_escape_string($this->db->link, $prerequisite);
 
-			if ($jId == "" || $dId == "" ||$levelId == ""|| $ldApplication == ""|| $degId == ""|| $mcomp == ""|| $expDate =="") {
+			if ($jId == "" || $dId == "" ||$levelId == ""|| $ldApplication == ""|| $degId == ""|| $mimcomp == ""||  $mxmcomp == ""|| $expDate =="" || $prerequisite == "") {
 				$msg = "Please Fillup All Field";
 					return $msg;
 			}else{
-				$query = "INSERT INTO tbl_user_job(jId, dId, levelId, ldApplication, degId, mcomp, expDate) VALUES('$jId', '$dId', '$levelId', '$ldApplication', '$degId', '$mcomp', '$expDate')";
+				$query = "INSERT INTO tbl_store_job(jId, dId, levelId, ldApplication, degId, mimcomp, mxmcomp, expDate, prerequisite) VALUES('$jId', '$dId', '$levelId', '$ldApplication', '$degId',
+				'$mimcomp', '$mxmcomp', '$expDate', '$prerequisite')";
 				$result = $this->db->insert($query);
 				if ($result) {
 					$msg = "Record Successfully";
@@ -160,6 +164,42 @@
 					return $msg;
 				}
 			}
+		}
+
+		public function jobPosting($jId){
+			
+			$jId = mysqli_real_escape_string($this->db->link, $jId);
+
+			$Squery = "SELECT * FROM tbl_store_job";
+			$getJob = $this->db->select($Squery);
+			if ($getJob) {
+				while ($value = $getJob->fetch_assoc()) {
+					
+					$dId = $value['dId'];
+					$levelId = $value['levelId'];
+					$ldApplication = $value['ldApplication'];
+					$degId = $value['degId'];
+					$mimcomp = $value['mimcomp'];
+					$mxmcomp = $value['mxmcomp'];
+					$expDate = $value['expDate'];
+
+					$query = "INSERT INTO tbl_user_job(jId, dId, levelId, ldApplication, degId, mimcomp, mxmcomp, expDate) VALUES('$jId', '$dId', '$levelId', '$ldApplication', '$degId', '$mimcomp', '$mxmcomp', '$expDate')";
+					$result = $this->db->insert($query);
+
+					if ($result) {
+						$msg = "Your Job Has Been Post Successfully.";
+						return $msg;
+					}else{
+						$msg = "Your Job Has Been Not Post Successfully.";
+						return $msg;
+					}
+				}
+			}
+		}
+		public function getDescriptionById($jobId){
+			$query = "SELECT * FROM  jd_bank WHERE jId = '$jobId'";
+			$result = $this->db->select($query);
+			return ($result);
 		}
 
 		public function delDegByid($deldeg){
@@ -213,7 +253,7 @@
 
 		   public function getjobList(){
 		   	$query = "SELECT p.*, c.levelName, j.jobtitle, r.degName, s.deptName
-				FROM tbl_user_job as p, tbl_job_level as c, tbl_jobtitle as j, tbl_degree as r, tbl_department as s
+				FROM tbl_store_job as p, tbl_job_level as c, tbl_jobtitle as j, tbl_degree as r, tbl_department as s
 				WHERE p.levelId = c.levelId AND p.jId = j.jId AND p.degId = r.degId AND p.dId = s.dId
 				ORDER BY p.jsId DESC";
 
@@ -302,6 +342,190 @@
 
 				$value = $this->db->select($query);
 				return $value;
-		}		   
+		}
+
+		public function getdate($uId){
+			$query = "SELECT * FROM tbl_user_reg WHERE regId = '$uId'";
+			$result = $this->db->select($query);
+			return $result;
+		}
+
+		public function getinterdate($uId, $jId){
+			$query = "SELECT * FROM tbl_interview WHERE userId = '$uId' AND jId = '$jId'";
+			$result = $this->db->select($query);
+			return $result;
+		}
+		
+		public function getAllpeople(){
+		
+			$query = "SELECT p.*, s.specialization
+				FROM tbl_user_reg as p, tbl_specialization as s
+				WHERE p.spId = s.spId ORDER BY regId DESC limit 30";
+				
+				$result= $this->db->select($query);
+				return $result;
+		}
+
+	public function getallparticipanr(){
+		//$query = "SELECT * FROM tbl_interview WHERE status = '1'";
+
+		$query = "SELECT p.*, u.userName, j.jobtitle
+				FROM tbl_interview as p, tbl_user_reg as u, tbl_jobtitle as j
+				WHERE p.userId = u.regId AND p.jId = j.jId AND status = '1'";
+		$result = $this->db->select($query);
+		return $result;
+	}
+
+	public function markattendence($status, $userId, $jId){
+		
+		$status =  mysqli_real_escape_string($this->db->link, $status);
+
+		if ($status == "") {
+			$msg = "please Select Option";
+			return $msg;
+		}else{
+			$query = "UPDATE tbl_interview
+						SET 
+						attend = '$status'
+
+						WHERE userId = '$userId' AND jId = '$jId'";
+			$update_row = $this->db->update($query);
+			if ($update_row) {
+				$msg = "Attendence Marked";
+				return $msg;
+			}else{
+				$msg = "Attendence Not Marked";
+				return $msg;
+			}
+		}
+		
+	}
+
+	public function getallreparticipant(){
+		$query = "SELECT * FROM tbl_disappertime WHERE status = '1'";
+		$result = $this->db->select($query);
+		return $result;
+	}
+
+	public function markdisappearattendence($status, $userId, $jId){
+		
+		$status =  mysqli_real_escape_string($this->db->link, $status);
+
+		if ($status == "") {
+			$msg = "please Select Option";
+			return $msg;
+		}else{
+			$query = "UPDATE tbl_disappertime
+						SET 
+						attend = '$status'
+
+						WHERE userId = '$userId' AND jId = '$jId'";
+			$update_row = $this->db->update($query);
+			if ($update_row) {
+				$msg = "Attendence Marked";
+				return $msg;
+			}else{
+				$msg = "Attendence Not Marked";
+				return $msg;
+			}
+		}
+		
+	}
+
+	public function getAbsent(){
+		$query = "SELECT p.*, u.userName, j.jobtitle
+				FROM tbl_interview as p, tbl_user_reg as u, tbl_jobtitle as j
+				WHERE p.userId = u.regId AND p.jId = j.jId AND attend = '2'";
+		$result = $this->db->select($query);
+		return $result;
+	}
+
+	public function markabsent($userId, $jId){
+		$userId =  mysqli_real_escape_string($this->db->link, $userId);
+		$jId =  mysqli_real_escape_string($this->db->link, $jId);
+
+			$Mquery = "SELECT * FROM tbl_user_reg WHERE regId = '$userId'";
+			$result = $this->db->select($Mquery)->fetch_assoc();
+			$email = $result['email'];
+			$userName = $result['userName'];
+
+		 $query =  "SELECT * FROM tbl_interview WHERE attend = '2'";
+		 $result = $this->db->select($query)->fetch_assoc();
+		 
+		 $jId = $result['jId'];
+		 $userId = $result['userId'];
+		 $interviewdate = $result['interviewdate'];
+		 $starttime = $result['starttime'];
+		 $endtime = $result['endtime'];
+
+		 $insert = "INSERT INTO tbl_absent(jId, userId, interviewdate, starttime, endtime) VALUES('$jId', '$userId', '$interviewdate', '$starttime', '$endtime')";
+		 $insert_row = $this->db->insert($insert);
+		 if ($insert_row) {
+		 	
+												?>
+                                <script>
+                                alert('Absentee Confirmation email Has been Sent To this Candidate !');
+                                window.location.href='absent_attendance.php';
+                                </script>
+                            <?php
+
+
+							$headers = 'From: '.$email."\r\n".
+							 
+							'Reply-To: '.$email."\r\n" .
+							 
+							'X-Mailer: PHP/' . phpversion();
+
+							$email_to = "arnab.r@keal.com.bd";
+							$email_subject= "Absentee Confirmation email";
+							$email_message= "
+											Dear $userName,
+											We regret to inform you that you missed the the following interview session:
+											In order to avail another session of interview please click below:
+ 
+ 
+											Please note that we reserve the right to blacklist/ greylist you for not being logical
+											enough to explain the reason for being absent.
+											Best Regards";
+
+
+							$headers1 = 'From: '.$email_to."\r\n".
+							 
+							'Reply-To: '.$email_to."\r\n" .
+							 
+							'X-Mailer: PHP/' . phpversion();
+
+							$email_subject1= "Absentee Confirmation email";
+							$email_message1= "Dear $userName,
+
+							We regret to inform you that you missed the the following interview session:
+											In order to avail another session of interview please click below:
+ 
+ 
+											Please note that we reserve the right to blacklist/ greylist you for not being logical
+											enough to explain the reason for being absent.
+											Best Regards
+								
+								 
+								Recruitment Office
+								Kyoto Engineering & Automation Ltd
+								B2 House 64 Block B Road 3
+								Niketon Gulshan Dhaka 1212
+								 
+								Emergency Contact Numbers:
+								 
+								01844046621
+								01844046666
+								01844046677
+							 
+							";
+
+							$email_message2= 'Date'.$date."\r\n";
+							mail("<$email_to>","$email_subject","$email_message","$headers");
+
+							mail("<$email>","$email_subject1","$email_message1","$headers1");
+		 }
+
+	}
 
 } ?>

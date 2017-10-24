@@ -54,7 +54,7 @@
 			return $result;
 		}
 
-		public function addressInsert($data){
+		public function addressInsert($uId, $data){
 			$flat 		 = $this->fm->validation($data['flat']);
 			$holding 	 = $this->fm->validation($data['holding']);
 			$building 	 = $this->fm->validation($data['building']);
@@ -79,24 +79,20 @@
 			$postId		 = mysqli_real_escape_string($this->db->link, $postId);
 			
 
-			if ($holding == "" || $block == "" || $divId == "" || $distId == "" || $thId == "" || $postId == "") {
-				$msg = "Fill ALL Address";
-				return $msg;
-			} else{
-				$query ="INSERT INTO tbl_address(flat, holding, building, block, area, divId, distId, thId, postId) VALUES ('$flat', '$holding', '$building', '$block', '$area', '$divId', '$distId', '$thId', '$postId')";
+			
+				$query ="INSERT INTO tbl_address(userId, flat, holding, building, block, area, divId, distId, thId, postId) VALUES ('$uId', '$flat', '$holding', '$building', '$block', '$area', '$divId', '$distId', '$thId', '$postId')";
 				$result = $this->db->insert($query);
 				if ($result) {
-					$msg = "Your present Address has been recorded";
-					return $msg;
+					header("Location:permanent_address.php");
 				}else{
 					$msg = "Your present Address not recorded";
 					return $msg;
 				}
-			}
+			
 
 		}
 
-		public function paddressInsert($data){
+		public function paddressInsert($uId, $data){
 
 			$id 	     = $this->fm->validation($data['id']);
 			$flat 		 = $this->fm->validation($data['flat']);
@@ -125,7 +121,7 @@
 			$thId		 = mysqli_real_escape_string($this->db->link, $thId);
 			$postId		 = mysqli_real_escape_string($this->db->link, $postId);
 
-			$query = "INSERT INTO tbl_paddress(id,flat, holding, building,road, block, area, divId, distId, thId, postId) VALUES('$id','$flat', '$holding', '$building','$road', '$block','$area', 'divId', '$distId', '$thId', '$postId')";
+			$query = "INSERT INTO tbl_paddress(userId, id,flat, holding, building,road, block, area, divId, distId, thId, postId) VALUES('$uId','$id','$flat', '$holding', '$building','$road', '$block','$area', 'divId', '$distId', '$thId', '$postId')";
 				$result = $this->db->insert($query);
 				if ($result) {
 					$msg = "Your Permanent Address has been recorded";
@@ -136,7 +132,7 @@
 				}
 		}
 
-		public function infoInsert($data){
+		public function infoInsert($data, $userId){
 			$tInstitution 	= $this->fm->validation($data['tInstitution']);
 			$trainingName 	= $this->fm->validation($data['trainingName']);
 			$tTopic 		= $this->fm->validation($data['tTopic']);
@@ -151,7 +147,7 @@
 				$msg = "Field Must Not be Empty!!";
 				return $msg;
 			}else{
-				$query = "INSERT INTO tbl_training(tInstitution, trainingName, tTopic, tLenth) VALUES('$tInstitution', '$trainingName', '$tTopic', '$tLenth')";
+				$query = "INSERT INTO tbl_training(userId, tInstitution, trainingName, tTopic, tLenth) VALUES('$userId','$tInstitution', '$trainingName', '$tTopic', '$tLenth')";
 				$result = $this->db->insert($query);
 				if ($result) {
 					$msg = "Inserted";
@@ -200,6 +196,89 @@
 
 
 		}
+
+		//upload image
+
+		public function uploadpicture($userId, $file){
+			  $permited  = array('jpg', 'jpeg', 'png', 'gif');
+			  $file_name = $file['image']['name'];
+			  $file_size = $file['image']['size'];
+			  $file_temp = $file['image']['tmp_name'];
+
+		      $div            = explode('.', $file_name);
+		      $file_ext       = strtolower(end($div));
+		      $unique_image   = substr(md5(time()), 0, 10).'.'.$file_ext;
+		      $uploaded_image = "uploads/".$unique_image;
+
+
+		    if ($uploaded_image == "") {
+		    	 
+		    	 $errmsg = "Browse Your Picture First And Submit";
+		    	 return $errmsg;
+
+		    	}elseif ($file_size >1048567) {
+			     echo "<span>Image Size should be less then 1MB!</span>";
+
+   			 	} elseif (in_array($file_ext, $permited) === false) {
+
+		     	echo "<span>You can upload only:-".implode(', ', $permited)."</span>";
+
+    			} else {
+			    	 move_uploaded_file($file_temp, $uploaded_image);
+			    	 $query = "UPDATE tbl_user_reg 
+			    	 			SET 
+			    	 			image = '$uploaded_image'
+
+			    	 			WHERE regId = '$userId'";
+			    	 $update_row = $this->db->update($query);
+			    	 if ($update_row) {
+			    	 	$msg = "<span>Image Upload complete</span>";
+			    	 	return $msg;
+			    	 }else{
+			    	 	$msg = "<span>Image Upload Not complete</span>";
+			    	 	return $msg;
+			    	 }
+			    	}
+		}
+
+		public function uploadresume($userId, $file){
+
+
+				$folder = "Resume/";
+				$temp = explode(".", $file["resume"]["name"]);
+				$newfilename = round(microtime(true)).'.'. end($temp);
+				$db_path ="$folder".$newfilename  ;
+				$listtype = array(
+				'.doc'=>'application/msword',
+				'.docx'=>'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+				'.rtf'=>'application/rtf',
+				'.pdf'=>'application/pdf'); 
+				if ( is_uploaded_file( $file['resume']['tmp_name'] ) )
+				{
+				if($key = array_search($file['resume']['type'],$listtype))
+				{if (move_uploaded_file($file['resume']  ['tmp_name'],"$folder".$newfilename))
+				{
+				
+				$sql ="INSERT INTO tbl_upload
+				(userId, resume) VALUES ('$userId','$db_path')";
+				$update_row = $this->db->update($sql);
+				if ($update_row) {
+			    	 	$msg = "<span>File Upload complete</span>";
+			    	 	return $msg;
+			    	 }else{
+			    	 	$msg = "<span>File Upload Not complete</span>";
+			    	 	return $msg;
+			    	 }
+				}
+				}
+				else    
+				{
+				echo "File Type Should Be .Docx or .Pdf or .Rtf Or .Doc";
+				}
+
+
+		}
+	}
 
 	}//main class
 ?>

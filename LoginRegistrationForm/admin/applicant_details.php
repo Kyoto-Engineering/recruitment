@@ -1,7 +1,9 @@
        <?php include_once "inc/header.php";?>
  <?php include_once "../Classes/resume.php";?>
+ <?php include_once "../helpers/Format.php";?>
           <?php
             $edu = new Resume();
+            $fm = new Format();
           ?>
       <!-- sidebar menu: : style can be found in sidebar.less -->
  <?php include_once "inc/sidebar.php";?>    
@@ -48,6 +50,27 @@
     <!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
+      <div class="row">
+      <?php 
+        $getU = $edu->getUser($uId);
+        if ($getU) {
+          while($value = $getU->fetch_assoc()){
+
+
+      ?>
+        <div class="col-md-8">
+          <h4>Name : </h4>
+          <p>Email:&nbsp;<?php echo $value['email'];?></p>
+         <p>Phone:&nbsp;<?php echo $value['phone'];?></p>
+         <p>Birth Date:&nbsp;<?php echo $fm->Dateformat($value['dob']);?></p>
+        </div>
+        <div class="col-md-4">
+          <div class="img_box">
+           <img src="uploads/<?php echo $value['image'];?>" alt="image" height="130" width="120px" />
+         </div>
+        </div>
+        <?php } } ?>
+      </div>
       <?php
         $getschool = $edu->getSchoolinfoby($uId);
         if ($getschool) {
@@ -74,9 +97,10 @@
       <tr>
         <td><?php echo $i ;?></td>
         <td><?php echo $value['name'];?></td>
-        <td><?php echo $value['gId'];?></td>
+        <td><?php echo $value['GName'];?></td>
         <td><?php echo $value['cgpa'];?></td>
-        <td><?php echo $value['pyearid'];?></td>
+        <td><?php echo $value['pyear'];?></td>
+        <td><?php echo $value['divName'];?></td>
       </tr>
    
     </tbody>
@@ -113,8 +137,8 @@
         <td><?php echo $value['name'];?></td>
         
         <td><?php echo $value['cgpa'];?></td>
-        <td><?php echo $value['pyearid'];?></td>
-        <td><?php echo $value['divId'];?></td>
+        <td><?php echo $value['pyear'];?></td>
+        <td><?php echo $value['divName'];?></td>
       </tr>
    
     </tbody>
@@ -202,10 +226,91 @@
       </div>
       <?php } } ?>
 <!-- /4th row end-->
+
+          <!-- /5th row -->
+<?php
+        $getver = $edu->getgraduationby($uId);
+        if ($getver) {
+            $i = 0;
+            while($value = $getver->fetch_assoc()){
+                $i++;
+
+    ?>
+      <div class="row">
+       <table class="table">
+    <thead>
+      <tr>
+        <td>SL</td>
+        <td>University</td>
+        <td>Department Of Study</td>
+        <td>cgpa</td>
+        <td>Passing Year</td>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+    <h3>Under Graduate Information</h3>
+    
+      <tr>
+        <td><?php echo $i ;?></td>
+        <td><?php echo $value['uName'];?></td>
+        <td><?php echo $value['studyDept'];?></td>
+        
+        <td><?php echo $value['cgpa'];?></td>
+        <td><?php echo $value['pyear'];?></td>
+       
+      </tr>
+   
+    </tbody>
+  </table>
+      </div>
+      <?php } } ?>
+<!-- /5th row end-->
+      <!-- 6th row -->
+<?php
+        $gettr = $edu->gettrainingby($uId);
+        if ($gettr) {
+            $i = 0;
+            while($value = $gettr->fetch_assoc()){
+                $i++;
+
+    ?>
+      <div class="row">
+       <table class="table">
+    <thead>
+      <tr>
+        <td>SL</td>
+        <td>Training Institute</td>
+        <td>Training Name</td>
+        <td>Training Topic</td>
+        <td>Length</td>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+    <h3>Professional Training Information</h3>
+    
+      <tr>
+        <td><?php echo $i ;?></td>
+        <td><?php echo $value['tInstitution'];?></td>
+        <td><?php echo $value['trainingName'];?></td>
+        
+        <td><?php echo $value['tTopic'];?></td>
+        <td><?php echo $value['tLenth'];?></td>
+        
+      </tr>
+   
+    </tbody>
+  </table>
+      </div>
+      <?php } } ?>
+<!-- /6th row end-->
       <!-- Main row -->
     <div class="container">
       <div class="row">
-      
+      <div class="col-md-6">
   <h3>Select Your Option For This Candidate</h3>
   
   <form action="" method="post">
@@ -220,8 +325,23 @@
                     <input class="w3-radio" type="radio"   name="status" value="3">
                     <label>Confirm</label>
    <p><button type="submit" name="submit" class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding">Submit</button></p>
-  </form>
- 
+  </form> 
+ </div>
+ <div class="col-md-6">
+    <?php 
+       $getid = $edu->getApplicantid($uId);
+        if ($getid) {
+            
+            while($value = $getid->fetch_assoc()){
+               
+    ?>
+
+   
+   <a href="create_schedule.php?application=<?php echo $value['userId'];?>" class="btn btn-default add-to-cart">Give Schedule This Applicant</a>
+                        
+  
+   <?php } } ?>
+ </div>
       </div>
     </div>      
     

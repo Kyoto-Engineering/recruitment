@@ -80,7 +80,7 @@ class Signup
 							 
 							'X-Mailer: PHP/' . phpversion();
 
-							$email_to = "tauhidul.i@keal.com.bd";
+							$email_to = "recruitment@keal.com.bd";
 							$email_subject= "Account Verification";
 							$email_message= "This person has been registered and sent for email verification:
 							Name : $userName
@@ -96,9 +96,12 @@ class Signup
 							$email_subject1= "Account Verification!";
 							$email_message1= "Dear $userName,
 
-							Please go to the link below to verify your email and complete the registration process
-
-
+							<span style='font-size:20px'>Welcome To Kyoto Automation & Engineering Ltd.<br/>
+							You are On the Way..<br/>
+							Let's Confirm Your Mail Address.</span><br/>
+							By clicking on the following link, you are
+							confirming your email address 
+						
 							http://recruitment.keal.com.bd/LoginRegistrationForm/verify_email.php?phone=$phone
 
 							 
@@ -156,7 +159,7 @@ class Signup
 			$logmsg = "Username Or Password Must Not be Empty!!";
 			return $logmsg;
 		}else{
-			$query = "SELECT * FROM tbl_user_reg WHERE email = '$email' AND phone = '$phone'";
+			$query = "SELECT * FROM tbl_user_reg WHERE email = '$email' AND phone = '$phone' AND statuss = '1'";
 			$result = $this->db->select($query);
 			if ($result !=false) {
 				$value = $result->fetch_assoc();

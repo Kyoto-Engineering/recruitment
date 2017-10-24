@@ -1,8 +1,10 @@
 <?php include_once "inc/header.php";?>
       <?php include_once "../Classes/module.php";?>
+      <?php include_once "../helpers/Format.php";?>
 
 <?php
     $allM = new Module();
+     $fm = new Format();
     /* if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         $userjob = $allM->jobInput($_POST);
     }*/
@@ -34,13 +36,12 @@
         <td>Applicant</td>
         <td>Job Title</td>
         <td>Department</td>
-        <td>Job level</td>
-        <td>Last date<br/> of Application</td>
-        <td>Education</td>
         
-        <td>Monthly<br/> Compansation</td>
-        <td>Expected<br/> Joining Date</td>
-        <td>Pre-requisite<br/> For Joining</td>
+        <td>Last date<br/> of Application</td>
+        
+        <td>Registration Date</td>
+       <td>Interview Date</td>
+      
         <td>Action</td>
         
 
@@ -57,16 +58,38 @@
 
     ?>
       <tr>
+      <?php 
+        $uId = $value['userId'];
+        $jId = $value['jId'];
+       ?>
         <td><?php echo $i ;?></td>
         <td><?php echo $value['userName'];?></td>
         <td><?php echo $value['jobtitle'];?></td>
         <td><?php echo $value['deptName'];?></td>
-        <td><?php echo $value['levelName'];?></td>
+        
         <td><?php echo $value['lastdApplication'];?></td>
-        <td><?php echo $value['degName'];?></td>
-        <td><?php echo $value['mComp'];?></td>
-        <td><?php echo $value['expDate'];?></td>
-        <td><?php echo $value['preRequisite'];?></td>
+        <?php
+        //$userId = Session::get("userId");
+        $gette = $allM->getdate($uId);
+        if ($gette) {
+           
+            while($value = $gette->fetch_assoc()){
+                
+
+        ?>
+        <td><?php echo $fm->Dateformat($value['date']);?></td>
+        <?php } } ?>
+       <?php
+        //$userId = Session::get("userId");
+        $gette = $allM->getinterdate($uId, $jId);
+        if ($gette) {
+           
+            while($value = $gette->fetch_assoc()){
+                
+
+        ?>
+        <td><?php echo $fm->Dateformat($value['interviewdate']);?></td>
+        <?php } } ?>
         <td>
         <a href="applicant_details.php?uId=<?php echo $value['userId'];?>">
         <input type="button" value="View"/> </a>

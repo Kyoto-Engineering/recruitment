@@ -35,7 +35,7 @@
 		}
 
 		public function getYear(){
-			$query  = "SELECT * FROM  tbl_passingyear ORDER BY pyearid DESC";
+			$query  = "SELECT * FROM  tbl_passingyear ORDER BY pyearid ASC";
 			$result = $this->db->select($query);
 			return $result; 
 		}
@@ -73,6 +73,11 @@
 	}
 	public function getDept(){
 		$query = "SELECT * FROM tbl_department ORDER BY dId DESC";
+		$result = $this->db->select($query);
+		return $result;
+	}
+	public function getStudydept(){
+		$query = "SELECT * FROM tbl_studydept ORDER BY studydeptId DESC";
 		$result = $this->db->select($query);
 		return $result;
 	}

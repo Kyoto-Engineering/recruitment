@@ -66,8 +66,8 @@ class Signup
 			if ($result !=false) {
 				$value = $result->fetch_assoc();
 				Session::set("login", true);
-				Session::set("userId",   $value['id']);
-				Session::set("userName", $value['uname']);
+				Session::set("adminId",   $value['id']);
+				Session::set("adminName", $value['uname']);
 				
 				header("Location:index.php");
 			}else{
