@@ -86,7 +86,7 @@
                 <i class="fa fa-user" aria-hidden="true"></i>
 
                 <p>
-                  Super Admin
+                  <?php echo Session::get('adminName');?>
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>

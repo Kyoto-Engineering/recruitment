@@ -19,11 +19,34 @@
     <!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
-      <div class="row">
-      <div class="col-md-12 text-center">
-        <span style="color: green; font-style: italic; font-weight: bold; font-size: 40px;">WELCOME ADMIN TO CONTROL PANEL</span>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+           <table class="table">
+           
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+           
+      <tr class="success">
+        <td>Success</td>
+        <td>Doe</td>
+        
+      </tr>
+     
+     
+     
+      
+    </tbody>
+  </table>
+        </div>
       </div>
-      </div>
+      
       <!-- /.row -->
 
       
