@@ -3,9 +3,10 @@
 
 <?php
     $allM = new Module();
-    /* if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-        $userjob = $allM->jobInput($_POST);
-    }*/
+     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        $jId = $_POST['jId'];
+        $userjob = $allM->jobPosting($jId);
+    }
 ?>
  <?php include_once "inc/sidebar.php";?>    
 
@@ -17,6 +18,11 @@
         Control panel
        
       </h1>
+      <?php 
+        if (isset($userjob)) {
+          echo $userjob;
+        }
+      ?>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
@@ -37,7 +43,8 @@
         <td>Last date of Application</td>
         <td>Education</t>
         
-        <td>Monthly Compansation</td>
+        <td>Min Compansation</td>
+        <td>Max Compansation</td>
         <td>Expected Joining Date</td>
         <td>Pre-requisite For Joining:</td>
         
@@ -55,16 +62,22 @@
     ?>
       <tr>
         <td><?php echo $i ;?></td>
-        <td><?php echo $value['jobtitle'];?></td>
+        <td><span style="text-decoration-line: underline;"><a href="job_description.php?jobId=<?php echo $value['jId'];?>" title="Job Description/Responsibilities"><?php echo $value['jobtitle'];?></a></span></td>
         <td><?php echo $value['deptName'];?></td>
         <td><?php echo $value['levelName'];?></td>
         <td><?php echo $value['ldApplication'];?></td>
         <td><?php echo $value['degName'];?></td>
-        <td><?php echo $value['mcomp'];?></td>
+        <td><?php echo $value['mimcomp'];?></td>
+        <td><?php echo $value['mxmcomp'];?></td>
         <td><?php echo $value['expDate'];?></td>
         <td><?php echo $value['prerequisite'];?></td>
         <td><?php echo $value['joblocation'];?></td>
        
+       <form action="" method="post">
+              <td><input type="hidden" name="jId" value="<?php echo $value['jId'];?>"></td>
+              <td><input type="submit" name="submit" value="Post"/></td>
+        </form>
+
 
       </tr>
    <?php } } ?>
